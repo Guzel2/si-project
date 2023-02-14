@@ -10,60 +10,60 @@ onready var highscore_label = find_node('highscore_label')
 var question
 
 var answers = {
-	'a': ['a', 'あ'],
-	'i': ['i', 'い'],
-	'u': ['u', 'う'],
-	'e': ['e', 'え'],
-	'o': ['o', 'お'],
+	'a': ['a', 'あ', 'ア'],
+	'i': ['i', 'い', 'イ'],
+	'u': ['u', 'う', 'ウ'],
+	'e': ['e', 'え', 'エ'],
+	'o': ['o', 'お', 'オ'],
 	
-	'ka': ['ka', 'か'],
-	'ki': ['ki', 'き'],
-	'ku': ['ku', 'く'],
-	'ke': ['ke', 'け'],
-	'ko': ['ko', 'こ'],
+	'ka': ['ka', 'か', 'カ'],
+	'ki': ['ki', 'き', 'キ'],
+	'ku': ['ku', 'く', 'ク'],
+	'ke': ['ke', 'け', 'ケ'],
+	'ko': ['ko', 'こ', 'コ'],
 	
-	'sa': ['sa', 'さ'],
-	'shi': ['si', 'shi', 'し'],
-	'su': ['su', 'す'],
-	'se': ['se', 'せ'],
-	'so': ['so', 'そ'],
+	'sa': ['sa', 'さ', 'サ'],
+	'shi': ['si', 'shi', 'し', 'シ'],
+	'su': ['su', 'す', 'ス'],
+	'se': ['se', 'せ', 'セ'],
+	'so': ['so', 'そ', 'ソ'],
 	
-	'ta': ['ta', 'た'],
-	'chi': ['ti', 'chi', 'ち'],
-	'tsu': ['tu', 'tsu', 'つ'],
-	'te': ['te', 'て'],
-	'to': ['to', 'と'],
+	'ta': ['ta', 'た', 'タ'],
+	'chi': ['ti', 'chi', 'ち', 'チ'],
+	'tsu': ['tu', 'tsu', 'つ', 'ツ'],
+	'te': ['te', 'て', 'テ'],
+	'to': ['to', 'と', 'ト'],
 	
-	'na': ['na', 'な'],
-	'ni': ['ni', 'に'],
-	'nu': ['nu', 'ぬ'],
-	'ne': ['ne', 'ね'],
-	'no': ['no', 'の'],
+	'na': ['na', 'な', 'ナ'],
+	'ni': ['ni', 'に', '二'],
+	'nu': ['nu', 'ぬ', 'ヌ'],
+	'ne': ['ne', 'ね', 'ネ'],
+	'no': ['no', 'の', 'ノ'],
 	
-	'ha': ['ha', 'は'],
-	'hi': ['hi', 'ひ'],
-	'fu': ['hu', 'fu', 'ふ'],
-	'he': ['he', 'へ'],
-	'ho': ['ho', 'ほ'],
+	'ha': ['ha', 'は', 'ハ'],
+	'hi': ['hi', 'ひ', 'ヒ'],
+	'fu': ['hu', 'fu', 'ふ', '不'],
+	'he': ['he', 'へ', 'ヘ'],
+	'ho': ['ho', 'ほ', 'ホ'],
 	
-	'ma': ['ma', 'ま'],
-	'mi': ['mi', 'み'],
-	'mu': ['mu', 'む'],
-	'me': ['me', 'め'],
-	'mo': ['mo', 'も'],
+	'ma': ['ma', 'ま', 'マ'],
+	'mi': ['mi', 'み', 'ミ'],
+	'mu': ['mu', 'む', 'ム'],
+	'me': ['me', 'め', 'メ'],
+	'mo': ['mo', 'も', 'モ'],
 	
-	'ya': ['ya', 'や'],
-	'yu': ['yu', 'ゆ'],
-	'yo': ['yo', 'よ'],
+	'ya': ['ya', 'や', 'ヤ'],
+	'yu': ['yu', 'ゆ', 'ユ'],
+	'yo': ['yo', 'よ', 'ヨ'],
 	
-	'ra': ['ra', 'ら'],
-	'ri': ['ri', 'り'],
-	'ru': ['ru', 'る'],
-	're': ['re', 'れ'],
-	'ro': ['ro', 'ろ'],
+	'ra': ['ra', 'ら', 'ラ'],
+	'ri': ['ri', 'り', 'リ'],
+	'ru': ['ru', 'る', 'ル'],
+	're': ['re', 'れ', 'レ'],
+	'ro': ['ro', 'ろ', 'ロ'],
 	
-	'wa': ['wa', 'わ'],
-	'wo': ['wo', 'o', 'を'],
+	'wa': ['wa', 'わ', 'ワ'],
+	'wo': ['wo', 'o', 'を', 'ヲ'],
 }
 
 var all_questions = [
@@ -116,7 +116,7 @@ func end_round():
 	active = false
 	
 	reset_lineedit.grab_focus()
-	monster.set_question('', true)
+	monster.set_question('', false)
 
 
 func save_file(content, path):
@@ -147,7 +147,7 @@ func next_question():
 		current_question = all_questions.pop_front()
 		all_questions.append(current_question)
 		
-		monster.set_question(current_question, true)
+		monster.set_question(current_question, false)
 
 
 func _on_lineedit_focus_entered():
