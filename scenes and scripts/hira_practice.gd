@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var parent = get_parent()
+
 onready var lineedit = find_node('lineedit')
 onready var reset_lineedit = find_node('reset_lineedit')
 onready var camera = find_node('camera')
