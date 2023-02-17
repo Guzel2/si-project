@@ -61,5 +61,67 @@ var romaji_to_hiragana = {
 	'wo': 'を',
 }
 
-func set_question(new_question):
-	question.text = romaji_to_hiragana[new_question]
+var romaji_to_katakana = {
+	'': '',
+	
+	'a': 'ア',
+	'i': 'イ',
+	'u': 'ウ',
+	'e': 'エ',
+	'o': 'オ',
+	
+	'ka': 'カ',
+	'ki': 'キ',
+	'ku': 'ク',
+	'ke': 'ケ',
+	'ko': 'コ',
+	
+	'sa': 'サ',
+	'shi': 'シ',
+	'su': 'ス',
+	'se': 'セ',
+	'so': 'ソ',
+	
+	'ta': 'タ',
+	'chi': 'チ',
+	'tsu': 'ツ',
+	'te': 'テ',
+	'to': 'ト',
+	
+	'na': 'ナ',
+	'ni': '二',
+	'nu': 'ヌ',
+	'ne': 'ネ',
+	'no': 'ノ',
+	
+	'ha': 'ハ',
+	'hi': 'ヒ',
+	'fu': '不',
+	'he': 'ヘ',
+	'ho': 'ホ',
+	
+	'ma': 'マ',
+	'mi': 'ミ',
+	'mu': 'ム',
+	'me': 'メ',
+	'mo': 'モ',
+	
+	'ya': 'ヤ',
+	'yu': 'ユ',
+	'yo': 'ヨ',
+	
+	'ra': 'ラ',
+	'ri': 'リ',
+	'ru': 'ル',
+	're': 'レ',
+	'ro': 'ロ',
+	
+	'wa': 'ワ',
+	'wo': 'ヲ',
+}
+
+func set_question(new_question, its_hiragana):
+	if its_hiragana:
+		question.text = romaji_to_hiragana[new_question]
+	else:
+		question.text = romaji_to_katakana[new_question]
