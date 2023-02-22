@@ -1,13 +1,7 @@
 extends Node2D
 
 onready var question = find_node('question')
-onready var sprite = find_node('sprite')
-
-var phase = -1
-var timer = 0
-
-var desired_x = 450
-var modifier = 8
+onready var sprite = null
 
 var romaji_to_hiragana = {
 	'': '',
@@ -127,49 +121,22 @@ var romaji_to_katakana = {
 	'wo': 'ヲ',
 }
 
-func _process(delta):
-	match phase:
-		0: #do nothing
-			pass
-		1: #set up wait
-			if sprite.modulate[3] != 1:
-				sprite.modulate = Color(1, 1, 1, 1)
-				sprite.position.x = 920
-			
-			timer = 0
-			phase = 2
-		2: #wait  sec
-			sprite.position.x = (sprite.position.x * modifier + desired_x) / (modifier + 1)
-			
-			timer += delta
-			if timer >= .35:
-				phase = 3
-		3: #fade away
-			var color = sprite.modulate
-			color[3] -= delta * 3.5
-			
-			sprite.modulate = color
-			
-			if color[3] <= 0:
-				phase = 4
-		4: #start walk in
-			sprite.modulate = Color(1, 1, 1, 1)
-			sprite.position.x = 920
-			phase = 5
-		5: #walk in
-			sprite.position.x = (sprite.position.x * modifier + desired_x) / (modifier + 1)
-			
-			if sprite.position.x - 450 < 1:
-				sprite.position.x = 450
-				phase = 0
-
 func set_question(new_question, its_hiragana):
 	if its_hiragana:
 		question.text = romaji_to_hiragana[new_question]
 	else:
 		question.text = romaji_to_katakana[new_question]
 	
-	if phase == -1:
-		phase = 4
+	if sprite != null:
+		sprite.phase = 1
+		
+		add_new_sprite()
 	else:
-		phase = 1
+		add_new_sprite()
+		sprite.should_move = true
+		sprite.phase = 0
+
+func add_new_sprite():
+	var new_sprite = load("res://scenes and scripts/monster_sprite.tscn").instance()
+	sprite = new_sprite
+	add_child(sprite)

@@ -3,8 +3,6 @@ extends AnimatedSprite
 var phase = -1
 
 func _process(delta):
-	print(phase)
-	
 	match phase:
 		0: #idle
 			pass
@@ -120,19 +118,22 @@ func set_position_to(desired_position: Vector2, modifier: int):
 	position = (position * modifier + desired_position) / (modifier + 1)
 	
 	if (position - desired_position).length() < 5:
-		print('pos_right')
 		return true
 
 func set_scale_to(desired_scale: Vector2, modifier: int):
 	scale = (scale * modifier + desired_scale) / (modifier + 1)
 	
 	if (scale - desired_scale).length() < .1:
-		print('scale_right', scale)
 		return true
 
 func set_rotation_to(desired_rotation: float, modifier: int):
 	rotation_degrees = (rotation_degrees * modifier + desired_rotation) / (modifier + 1)
 	
 	if (rotation_degrees - desired_rotation) < 2.5:
-		print('rot_right')
+		return true
+
+func set_modulate_to(desired_color: Color, modifier: int):
+	modulate = (modulate * modifier + desired_color) / (modifier + 1)
+	
+	if modulate.is_equal_approx(desired_color):
 		return true
