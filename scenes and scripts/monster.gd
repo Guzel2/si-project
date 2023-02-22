@@ -96,7 +96,7 @@ var romaji_to_katakana = {
 	
 	'ha': 'ハ',
 	'hi': 'ヒ',
-	'fu': '不',
+	'fu': 'フ',
 	'he': 'ヘ',
 	'ho': 'ホ',
 	
