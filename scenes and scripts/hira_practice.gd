@@ -5,7 +5,7 @@ onready var parent = get_parent()
 onready var lineedit = find_node('lineedit')
 onready var reset_lineedit = find_node('reset_lineedit')
 onready var camera = find_node('camera')
-onready var cat = find_node('cat')
+onready var character = find_node('character')
 onready var monster = find_node('monster')
 onready var highscore_label = find_node('highscore_label')
 
@@ -89,7 +89,7 @@ var active = false
 var current_question = null
 
 var highscore = 100000
-var highscore_path = "user://highscore.dat"
+var highscore_path = "user://hira_highscore.dat"
 
 
 func _ready():
@@ -150,6 +150,10 @@ func next_question():
 		all_questions.append(current_question)
 		
 		monster.set_question(current_question, true)
+		if character.phase == -1:
+			character.phase = 0
+		else:
+			character.phase = 1 #start attack
 
 
 func _on_lineedit_focus_entered():

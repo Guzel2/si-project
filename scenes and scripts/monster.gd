@@ -1,6 +1,7 @@
-extends Sprite
+extends Node2D
 
 onready var question = find_node('question')
+onready var sprite = null
 
 var romaji_to_hiragana = {
 	'': '',
@@ -96,7 +97,7 @@ var romaji_to_katakana = {
 	
 	'ha': 'ハ',
 	'hi': 'ヒ',
-	'fu': '不',
+	'fu': 'フ',
 	'he': 'ヘ',
 	'ho': 'ホ',
 	
@@ -125,3 +126,17 @@ func set_question(new_question, its_hiragana):
 		question.text = romaji_to_hiragana[new_question]
 	else:
 		question.text = romaji_to_katakana[new_question]
+	
+	if sprite != null:
+		sprite.phase = 1
+		
+		add_new_sprite()
+	else:
+		add_new_sprite()
+		sprite.should_move = true
+		sprite.phase = 0
+
+func add_new_sprite():
+	var new_sprite = load("res://scenes and scripts/monster_sprite.tscn").instance()
+	sprite = new_sprite
+	add_child(sprite)

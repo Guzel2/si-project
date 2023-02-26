@@ -1,0 +1,108 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scenes and scripts/monster_sprite.gd" type="Script" id=1]
+[ext_resource path="res://sprites/monsters/Dog_inu.png" type="Texture" id=2]
+[ext_resource path="res://sprites/monsters/Milk_gyuunyuu.png" type="Texture" id=3]
+[ext_resource path="res://sprites/monsters/Ramen_raamen.png" type="Texture" id=4]
+[ext_resource path="res://sprites/monsters/Soccer_sakkaa.png" type="Texture" id=5]
+[ext_resource path="res://sprites/monsters/Spoon_supuun.png" type="Texture" id=6]
+[ext_resource path="res://sprites/monsters/Stamp_kitte.png" type="Texture" id=7]
+[ext_resource path="res://sprites/monsters/Apple_ringo.png" type="Texture" id=8]
+[ext_resource path="res://sprites/monsters/Chopsticks_ohashi.png" type="Texture" id=9]
+[ext_resource path="res://sprites/monsters/Juice_juusu.png" type="Texture" id=10]
+[ext_resource path="res://sprites/monsters/Fork_Fooku.png" type="Texture" id=11]
+[ext_resource path="res://sprites/monsters/Cheese_chiizu.png" type="Texture" id=12]
+[ext_resource path="res://sprites/monsters/Bus_basu.png" type="Texture" id=13]
+[ext_resource path="res://sprites/monsters/Cookie_kukkii.png" type="Texture" id=14]
+[ext_resource path="res://sprites/monsters/Japan_nihon.png" type="Texture" id=15]
+[ext_resource path="res://sprites/monsters/Umbrella_kasa.png" type="Texture" id=16]
+[ext_resource path="res://sprites/monsters/Taxi_takushii.png" type="Texture" id=17]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "apple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "bus",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "cheese",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "chopsticks",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "cookie",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "dog",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "fork",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "japan",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "juice",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "milk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "ramen",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "soccer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "spoon",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "stamp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "taxi",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "umbrella",
+"speed": 5.0
+} ]
+
+[node name="monster_sprite" type="AnimatedSprite"]
+position = Vector2( 1000, 340 )
+frames = SubResource( 4 )
+animation = "umbrella"
+script = ExtResource( 1 )
