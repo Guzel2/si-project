@@ -118,7 +118,7 @@ func end_round():
 	active = false
 	
 	reset_lineedit.grab_focus()
-	monster.set_question('', false)
+	monster.set_question('', 'kata')
 
 
 func save_file(content, path):
@@ -149,7 +149,7 @@ func next_question():
 		current_question = all_questions.pop_front()
 		all_questions.append(current_question)
 		
-		monster.set_question(current_question, false)
+		monster.set_question(current_question, 'kata')
 		if character.phase == -1:
 			character.phase = 0
 		else:

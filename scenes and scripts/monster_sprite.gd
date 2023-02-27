@@ -5,7 +5,7 @@ var should_move = false
 var phase = -1
 var timer = 0
 
-var list_of_animations = ['apple', 'bus', 'cheese', 'chopsticks', 'cookie', 'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 'soccer', 'spoon', 'stamp', 'taxi', 'umbrella']
+var list_of_animations = ['apple', 'bus', 'cheese', 'chopsticks', 'cookie', 'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 'soccer', 'spoon', 'stamp', 'taxi', 'umbrella', 'one', 'two', 'three', 'four']
 
 #func _ready():
 #	print((frames.get_animation_names()))

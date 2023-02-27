@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var parent = get_parent()
 onready var question = find_node('question')
 onready var sprite = null
 
@@ -121,12 +122,7 @@ var romaji_to_katakana = {
 	'wo': 'ヲ',
 }
 
-func set_question(new_question, its_hiragana):
-	if its_hiragana:
-		question.text = romaji_to_hiragana[new_question]
-	else:
-		question.text = romaji_to_katakana[new_question]
-	
+func set_question(new_question, mode):
 	if sprite != null:
 		sprite.phase = 1
 		
@@ -135,6 +131,18 @@ func set_question(new_question, its_hiragana):
 		add_new_sprite()
 		sprite.should_move = true
 		sprite.phase = 0
+	
+	match mode:
+		'hira':
+			question.text = romaji_to_hiragana[new_question]
+		'kata':
+			question.text = romaji_to_katakana[new_question]
+		'vocab_english':
+			question.text = new_question
+			sprite.animation = new_question
+		'vocab_japanese':
+			question.text = parent.answers[new_question][0]
+			sprite.animation = new_question
 
 func add_new_sprite():
 	var new_sprite = load("res://scenes and scripts/monster_sprite.tscn").instance()
