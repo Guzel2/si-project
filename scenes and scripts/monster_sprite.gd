@@ -7,13 +7,25 @@ var timer = 0
 
 var list_of_animations = ['apple', 'bus', 'cheese', 'chopsticks', 'cookie', 'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 'soccer', 'spoon', 'stamp', 'taxi', 'umbrella', 'one', 'two', 'three', 'four']
 
+var mode
+var question
+
 #func _ready():
 #	print((frames.get_animation_names()))
 
 func _ready():
 	randomize()
 	list_of_animations.shuffle()
-	animation = list_of_animations[0]
+	
+	match mode:
+		'hira':
+			animation = list_of_animations[0]
+		'kata':
+			animation = list_of_animations[0]
+		'vocab_english':
+			animation = question
+		'vocab_japanese':
+			animation = question
 
 func _process(delta):
 	if should_move:
