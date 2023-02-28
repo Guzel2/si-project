@@ -12,6 +12,7 @@ onready var highscore_label = find_node('highscore_label')
 var question
 
 var answers = {
+	'': [''],
 	'apple': ['りんご', 'ringo'], 
 	'bus': ['バス', 'basu'], 
 	'cheese': ['チーズ', 'chiizu'], 
@@ -39,6 +40,19 @@ var answers = {
 	'nine': ['きゅう', 'kyuu'],
 	'ten': ['じゅう', 'juu'],
 	'zero': ['ゼロ', 'zero'],
+	'black': ['くろい', 'くろ', 'kuroi', 'kuro'],
+	'white': ['しろい', 'しろ', 'shiroi', 'shiro'],
+	'yellow': ['きいろい', 'きいろ', 'kiiroi', 'kiiro'],
+	'brown': ['ちゃいろ', 'chairo'],
+	'blue': ['こんいろ', 'koniro', ' あおい', 'aoi', 'あお', 'ao'],
+	'green': ['みどりいろ', 'みどり', 'midoriiro', 'midori'],
+	'red': ['あかい', 'あか', 'akai', 'aka'],
+	'orange': ['オレンジいろ', 'orenjiiro'],
+	'pink': ['ビンク', 'pinku'],
+	'book': ['ほん', 'hon'],
+	'dragon': ['てつ', 'tetsu', 'tetu'],
+	'television': ['テレビ', 'terebi'],
+	'knife': ['ナイフ', 'naifu'],
 }
 
 var all_questions = [
@@ -68,7 +82,20 @@ var all_questions = [
 	'eight',
 	'nine',
 	'ten',
-	'zero'
+	'zero',
+	'black',
+	'white',
+	'yellow',
+	'brown',
+	'blue',
+	'green',
+	'red',
+	'orange',
+	'pink',
+	'book',
+	'dragon',
+	'television',
+	'knife',
 	]
 
 var due_questions = []
@@ -93,9 +120,23 @@ func _ready():
 	var data = read_file(due_path + mode + '.dat')
 	if data != null: #
 		due_dates = data
+		
+		for new_question in all_questions:
+			if !(new_question in due_dates.keys()):
+				due_dates[new_question] = {
+					'day': 1,
+					'dst': false,
+					'hour': 0,
+					'minute': 0,
+					'month': 0,
+					'second': 0,
+					'weekday': 0,
+					'year': 3000
+				}
+	
 	else: #set-up data
-		for question in all_questions:
-			due_dates[question] = {
+		for new_question in all_questions:
+			due_dates[new_question] = {
 				'day': 1,
 				'dst': false,
 				'hour': 0,
@@ -105,11 +146,12 @@ func _ready():
 				'weekday': 0,
 				'year': 3000
 			}
+	
+	save_file(due_dates, due_path + mode + '.dat')
 
 
 func start_new_round():
-	var time = OS.get_datetime()
-	print(time)
+	var current_date = OS.get_datetime()
 	
 	var dict = {
 		'one': 1,
@@ -122,10 +164,23 @@ func start_new_round():
 	
 	print('four' in dict.keys())
 	
+	var time_intervals = ['year', 'month', 'day', 'hour']
+	
+	for new_question in due_dates.keys():
+		for interval in time_intervals:
+			if due_dates[new_question][interval] < current_date[interval]:
+				due_questions.append(new_question)
+				break
+			elif due_dates[new_question][interval] > current_date[interval]:
+				break
+	
+	print(due_questions)
+	
+	if due_questions.size() == 0:
+		due_questions = ['zero']
 	
 	lineedit.placeholder_text = 'translate to English'
 	active = true
-	due_questions = all_questions.duplicate()
 	due_questions.shuffle()
 	completed_questions.clear()
 	
