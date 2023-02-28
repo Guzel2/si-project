@@ -81,12 +81,48 @@ var current_question = null
 
 var mode = 'vocab_japanese'
 
+var due_dates = {}
+
+var due_path = 'user://due_dates_'
+
 func _ready():
 	randomize()
+	mode = parent.mode
+	
+	
+	var data = read_file(due_path + mode + '.dat')
+	if data != null: #
+		due_dates = data
+	else: #set-up data
+		for question in all_questions:
+			due_dates[question] = {
+				'day': 1,
+				'dst': false,
+				'hour': 0,
+				'minute': 0,
+				'month': 0,
+				'second': 0,
+				'weekday': 0,
+				'year': 3000
+			}
 
 
 func start_new_round():
-	print('sus')
+	var time = OS.get_datetime()
+	print(time)
+	
+	var dict = {
+		'one': 1,
+		'two': 2
+	}
+	
+	dict['three'] = 3
+	
+	print(dict)
+	
+	print('four' in dict.keys())
+	
+	
 	lineedit.placeholder_text = 'translate to English'
 	active = true
 	due_questions = all_questions.duplicate()

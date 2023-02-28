@@ -62,7 +62,27 @@ margin_top = 43.0
 margin_right = 507.0
 margin_bottom = 157.0
 custom_fonts/font = SubResource( 1 )
-text = "Vocabulary Practice"
+text = "Vocabulary Practice
+jap -> english"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="vocab_practice2" type="TextureButton" parent="."]
+margin_left = 49.0
+margin_top = 950.0
+margin_right = 679.0
+margin_bottom = 570.0
+texture_normal = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="vocab_practice2"]
+margin_left = 94.0
+margin_top = 43.0
+margin_right = 507.0
+margin_bottom = 157.0
+custom_fonts/font = SubResource( 1 )
+text = "Vocabulary Practice
+english -> jap"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -70,3 +90,4 @@ __meta__ = {
 [connection signal="pressed" from="hira_practice" to="." method="_on_hira_practice_pressed"]
 [connection signal="pressed" from="kata_practice" to="." method="_on_kata_practice_pressed"]
 [connection signal="pressed" from="vocab_practice" to="." method="_on_vocab_practice_pressed"]
+[connection signal="pressed" from="vocab_practice2" to="." method="_on_vocab_practice2_pressed"]

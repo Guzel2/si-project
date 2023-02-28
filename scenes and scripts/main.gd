@@ -7,7 +7,10 @@ var node_paths = {
 	'vocab_practice': "res://scenes and scripts/vocab_practice.tscn",
 }
 
+var mode = 'vocab_english'
+
 func enter(node):
+	print(mode)
 	var new_node = load(node_paths[node]).instance()
 	add_child(new_node)
 
