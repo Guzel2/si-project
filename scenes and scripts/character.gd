@@ -2,7 +2,7 @@ extends AnimatedSprite
 
 var phase = -1
 
-func _process(delta):
+func _process(_delta):
 	match phase:
 		0: #idle
 			pass

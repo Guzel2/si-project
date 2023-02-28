@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes and scripts/monster_sprite.gd" type="Script" id=1]
 [ext_resource path="res://sprites/monsters/Dog_inu.png" type="Texture" id=2]
@@ -17,6 +17,17 @@
 [ext_resource path="res://sprites/monsters/Japan_nihon.png" type="Texture" id=15]
 [ext_resource path="res://sprites/monsters/Umbrella_kasa.png" type="Texture" id=16]
 [ext_resource path="res://sprites/monsters/Taxi_takushii.png" type="Texture" id=17]
+[ext_resource path="res://sprites/monsters/Three_san.png" type="Texture" id=18]
+[ext_resource path="res://sprites/monsters/Two_nii.png" type="Texture" id=19]
+[ext_resource path="res://sprites/monsters/Four_yon.png" type="Texture" id=20]
+[ext_resource path="res://sprites/monsters/One_ichi.png" type="Texture" id=21]
+[ext_resource path="res://sprites/monsters/Six_roku.png" type="Texture" id=22]
+[ext_resource path="res://sprites/monsters/Nine_kyuu.png" type="Texture" id=23]
+[ext_resource path="res://sprites/monsters/Seven_nana.png" type="Texture" id=24]
+[ext_resource path="res://sprites/monsters/Zero_zero.png" type="Texture" id=25]
+[ext_resource path="res://sprites/monsters/Ten_juu.png" type="Texture" id=26]
+[ext_resource path="res://sprites/monsters/Five_go.png" type="Texture" id=27]
+[ext_resource path="res://sprites/monsters/Eight_hachi.png" type="Texture" id=28]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -50,9 +61,24 @@ animations = [ {
 "name": "dog",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "eight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "five",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "fork",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "four",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -70,9 +96,29 @@ animations = [ {
 "name": "milk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "nine",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "one",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "ramen",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "seven",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "six",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -95,14 +141,34 @@ animations = [ {
 "name": "taxi",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "ten",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "three",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "two",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "umbrella",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "zero",
 "speed": 5.0
 } ]
 
 [node name="monster_sprite" type="AnimatedSprite"]
 position = Vector2( 1000, 340 )
 frames = SubResource( 4 )
-animation = "umbrella"
+animation = "eight"
 script = ExtResource( 1 )
