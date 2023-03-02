@@ -55,31 +55,63 @@ func _process(delta):
 				should_die = false
 			if !set_scale_to(Vector2(1.25, .75), 20):
 				should_die = false
-			if !set_position_to(Vector2(430, 360), 10):
+			if !set_position_to(Vector2(430, 340), 10):
 				should_die = false
 			
 			if should_die:
-				phase = 4
+				phase = 9
+		
+		4: #flee start up
+			should_move = false
+			var next_phase = true
 			
-		4: #die
+			if !set_scale_to(Vector2(1.2, .88), 8):
+				next_phase = false
+				print('sca')
+			if !set_position_to(Vector2(465, 340), 9):
+				next_phase = false
+				print('pos')
+			
+			if next_phase:
+				print('next_phase')
+				phase = 5
+		
+		5: #flee start up
+			var should_die = true
+			
+			if !set_modulate_to(Color(1, 1, 1, 0), 14):
+				should_die = false
+			if !set_scale_to(Vector2(.7, 1.35), 20):
+				should_die = false
+			if !set_position_to(Vector2(400, -350), 18):
+				should_die = false
+			
+			if should_die:
+				phase = 9
+		
+		
+		9: #die
 			queue_free()
 
 func set_position_to(desired_position: Vector2, modifier: int):
 	position = (position * modifier + desired_position) / (modifier + 1)
 	
 	if (position - desired_position).length() < 5:
+		position = desired_position
 		return true
 
 func set_scale_to(desired_scale: Vector2, modifier: int):
 	scale = (scale * modifier + desired_scale) / (modifier + 1)
 	
 	if (scale - desired_scale).length() < .1:
+		scale = desired_scale
 		return true
 
 func set_rotation_to(desired_rotation: float, modifier: int):
 	rotation_degrees = (rotation_degrees * modifier + desired_rotation) / (modifier + 1)
 	
 	if (rotation_degrees - desired_rotation) < 2.5:
+		rotation_degrees = desired_rotation
 		return true
 
 func set_modulate_to(desired_color: Color, modifier: int):
@@ -92,4 +124,5 @@ func set_modulate_to(desired_color: Color, modifier: int):
 		total -= desired_color[x]
 	
 	if abs(total) < .05:
+		modulate = desired_color
 		return true

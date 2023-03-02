@@ -122,6 +122,12 @@ var romaji_to_katakana = {
 	'wo': 'ヲ',
 }
 
+func sprite_flews():
+	sprite.phase = 4
+
+func sprite_dies():
+	sprite.phase = 1
+
 func set_question(new_question, mode):
 	match mode:
 		'hira':
@@ -134,7 +140,6 @@ func set_question(new_question, mode):
 			question.text = parent.answers[new_question][0]
 	
 	if sprite:
-		sprite.phase = 1
 		add_new_sprite(new_question, mode)
 	else:
 		add_new_sprite(new_question, mode)
@@ -147,3 +152,7 @@ func add_new_sprite(new_question, mode):
 	sprite.mode = mode
 	sprite.question = new_question
 	add_child(sprite)
+
+func end_round():
+	question.text = ''
+	sprite = null

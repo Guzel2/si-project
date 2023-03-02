@@ -81,16 +81,17 @@ var all_questions = [
 	'wa', 'wo'
 	]
 
-var completed_questions = []
+var due_questions = []
 
 var time = 0
 var active = false
 
-var current_question = null
+var current_question = 'a'
 
 var highscore = 100000
 var highscore_path = "user://hira_highscore.dat"
 
+var just_showed_answer = false
 
 func _ready():
 	randomize()
@@ -102,8 +103,8 @@ func _ready():
 func start_new_round():
 	lineedit.placeholder_text = 'write as romaji'
 	active = true
-	all_questions.shuffle()
-	completed_questions.clear()
+	due_questions = all_questions.duplicate()
+	due_questions.shuffle()
 	time = 0
 	
 	next_question()
@@ -118,7 +119,8 @@ func end_round():
 	active = false
 	
 	reset_lineedit.grab_focus()
-	monster.set_question('', 'hira')
+	lineedit.clear()
+	monster.end_round()
 
 
 func save_file(content, path):
@@ -141,32 +143,48 @@ func _process(delta):
 		time += delta
 
 
-func next_question():
-	if completed_questions.size() >= all_questions.size():
+
+func complete_question():
+	if due_questions.empty():
+		monster.sprite_dies()
+		character.phase = 1 #start attack
 		end_round()
 	else:
-		completed_questions.append(current_question)
-		current_question = all_questions.pop_front()
-		all_questions.append(current_question)
+		monster.sprite_dies()
+		character.phase = 1 #start attack
 		
-		monster.set_question(current_question, 'hira')
-		if character.phase == -1:
-			character.phase = 0
-		else:
-			character.phase = 1 #start attack
+		next_question()
+
+
+func next_question():
+	lineedit.clear()
+	current_question = due_questions.pop_front()
+	monster.set_question(current_question, 'hira')
 
 
 func _on_lineedit_focus_entered():
-	start_new_round()
+	if !just_showed_answer:
+		start_new_round()
+	else: #monster flews
+		lineedit.placeholder_text = 'write as romaji'
+		monster.sprite_flews()
+		due_questions.append(current_question)
+		due_questions.shuffle()
+		next_question()
+		just_showed_answer = false
 
 
 func _on_lineedit_text_changed(new_text):
 	new_text = new_text.to_lower()
 	
 	if new_text in answers[current_question]:
-		lineedit.clear()
-		next_question()
+		complete_question()
 
 
 func _on_lineedit_focus_exited():
 	lineedit.placeholder_text = 'click to start'
+
+
+func _on_show_answer_pressed():
+	lineedit.text = current_question + ' (click to continue)'
+	just_showed_answer = true

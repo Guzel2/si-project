@@ -50,7 +50,7 @@ var answers = {
 	'orange': ['オレンジいろ', 'orenjiiro'],
 	'pink': ['ビンク', 'pinku'],
 	'book': ['ほん', 'hon'],
-	'dragon': ['てつ', 'tetsu', 'tetu'],
+	'dragon': ['たつ', 'tatsu', 'tatu'],
 	'television': ['テレビ', 'terebi'],
 	'knife': ['ナイフ', 'naifu'],
 }
@@ -104,7 +104,7 @@ var completed_questions = []
 
 var active = false
 
-var current_question = null
+var current_question = 'apple'
 
 var mode = 'vocab_japanese'
 
@@ -112,10 +112,11 @@ var due_dates = {}
 
 var due_path = 'user://due_dates_'
 
+var just_showed_answer = false
+
 func _ready():
 	randomize()
 	mode = parent.mode
-	
 	
 	var data = read_file(due_path + mode + '.dat')
 	if data != null: #
@@ -153,17 +154,6 @@ func _ready():
 func start_new_round():
 	var current_date = OS.get_datetime()
 	
-	var dict = {
-		'one': 1,
-		'two': 2
-	}
-	
-	dict['three'] = 3
-	
-	print(dict)
-	
-	print('four' in dict.keys())
-	
 	var time_intervals = ['year', 'month', 'day', 'hour']
 	
 	for new_question in due_dates.keys():
@@ -176,10 +166,12 @@ func start_new_round():
 	
 	print(due_questions)
 	
+	due_questions = all_questions.duplicate()
+	
 	if due_questions.size() == 0:
 		due_questions = ['zero']
 	
-	lineedit.placeholder_text = 'translate to English'
+	lineedit.placeholder_text = 'translate'
 	active = true
 	due_questions.shuffle()
 	completed_questions.clear()
@@ -209,23 +201,34 @@ func read_file(path):
 	return(content)
 
 
-func next_question():
-	if completed_questions.size() >= due_questions.size():
+func complete_question():
+	if due_questions.empty():
+		monster.sprite_dies()
+		character.phase = 1 #start attack
 		end_round()
 	else:
-		completed_questions.append(current_question)
-		current_question = due_questions.pop_front()
-		due_questions.append(current_question)
+		monster.sprite_dies()
+		character.phase = 1 #start attack
 		
-		monster.set_question(current_question, mode)
-		if character.phase == -1:
-			character.phase = 0
-		else:
-			character.phase = 1 #start attack
+		next_question()
+
+
+func next_question():
+	lineedit.clear()
+	current_question = due_questions.pop_front()
+	monster.set_question(current_question, mode)
 
 
 func _on_lineedit_focus_entered():
-	start_new_round()
+	if !just_showed_answer:
+		start_new_round()
+	else:
+		lineedit.placeholder_text = 'translate'
+		monster.sprite_flews()
+		due_questions.append(current_question)
+		due_questions.shuffle()
+		next_question()
+		just_showed_answer = false
 
 
 func _on_lineedit_text_changed(new_text):
@@ -235,14 +238,22 @@ func _on_lineedit_text_changed(new_text):
 		'vocab_english':
 			if new_text in answers[current_question]:
 				lineedit.clear()
-				next_question()
+				complete_question()
 		'vocab_japanese':
 			if new_text == current_question:
 				lineedit.clear()
-				next_question()
-	
-	
+				complete_question()
 
 
 func _on_lineedit_focus_exited():
 	lineedit.placeholder_text = 'click to start'
+
+
+func _on_show_answer_pressed():
+	match mode:
+		'vocab_english':
+			lineedit.text = answers[current_question][0]
+		'vocab_japanese':
+			lineedit.text = current_question
+	
+	just_showed_answer = true

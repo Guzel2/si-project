@@ -234,14 +234,9 @@ animations = [ {
 "name": "umbrella",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 31 ) ],
-"loop": true,
-"name": "white",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 37 ) ],
 "loop": true,
-"name": "white 1",
+"name": "white",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 31 ) ],
