@@ -159,7 +159,7 @@ func complete_question():
 func next_question():
 	lineedit.clear()
 	current_question = due_questions.pop_front()
-	monster.set_question(current_question, 'hira')
+	monster.set_question(current_question, 'kata')
 
 
 func _on_lineedit_focus_entered():
