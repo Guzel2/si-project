@@ -100,8 +100,6 @@ var all_questions = [
 
 var due_questions = []
 
-var completed_questions = []
-
 var active = false
 
 var current_question = 'apple'
@@ -112,7 +110,11 @@ var due_dates = {}
 
 var due_path = 'user://due_dates_'
 
+var month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
 var just_showed_answer = false
+
+var streak = 0
 
 func _ready():
 	randomize()
@@ -121,40 +123,21 @@ func _ready():
 	var data = read_file(due_path + mode + '.dat')
 	if data != null: #
 		due_dates = data
+	else:
+		var current_date = OS.get_datetime()
+		for x in range(5):
+			due_dates[all_questions[x]] = current_date
+			due_dates['interval'] = 0
 		
-		for new_question in all_questions:
-			if !(new_question in due_dates.keys()):
-				due_dates[new_question] = {
-					'day': 1,
-					'dst': false,
-					'hour': 0,
-					'minute': 0,
-					'month': 0,
-					'second': 0,
-					'weekday': 0,
-					'year': 3000
-				}
+		save_file(due_dates, due_path + mode + '.dat')
 	
-	else: #set-up data
-		for new_question in all_questions:
-			due_dates[new_question] = {
-				'day': 1,
-				'dst': false,
-				'hour': 0,
-				'minute': 0,
-				'month': 0,
-				'second': 0,
-				'weekday': 0,
-				'year': 3000
-			}
-	
-	save_file(due_dates, due_path + mode + '.dat')
+	print(due_dates)
 
 
 func start_new_round():
 	var current_date = OS.get_datetime()
 	
-	var time_intervals = ['year', 'month', 'day', 'hour']
+	var time_intervals = ['year', 'month', 'day', 'hour', 'minute', 'second']
 	
 	for new_question in due_dates.keys():
 		for interval in time_intervals:
@@ -166,15 +149,14 @@ func start_new_round():
 	
 	print(due_questions)
 	
-	due_questions = all_questions.duplicate()
+	#due_questions = all_questions.duplicate()
 	
-	if due_questions.size() == 0:
+	if due_questions.size() == 0: #if there are no due questions, what do?
 		due_questions = ['zero']
 	
 	lineedit.placeholder_text = 'translate'
 	active = true
 	due_questions.shuffle()
-	completed_questions.clear()
 	
 	next_question()
 
@@ -210,8 +192,59 @@ func complete_question():
 		monster.sprite_dies()
 		character.phase = 1 #start attack
 		
-		next_question()
+		var current_time = OS.get_datetime()
+		var interval = due_dates[current_question]['interval']
+		var added_time = pow(2, interval)
+		var due_time = current_time.duplicate()
+		
+		while added_time > 0:
+			if added_time < 60: #add to minutes
+				due_time['minute'] += added_time
+				added_time -= added_time
+				adjust_time(due_time)
+			elif added_time < 1400: #add to hours
+				var hours = floor(added_time/60)
+				due_time['hour'] += hours
+				added_time -= hours * 60
+				adjust_time(due_time)
+			elif added_time < 1440 * month_days[current_time['month']]: #add to days
+				var days = floor(added_time/1440)
+				due_time['day'] += days
+				added_time -= days * 1440
+				adjust_time(due_time)
+			elif added_time < 525600: #add to month
+				var months = floor(added_time/1440 * month_days[current_time['month']])
+				due_time['months'] += months
+				added_time -= months * 1440 * month_days[current_time['month']]
+			else: #add to year
+				var years = floor(added_time/525600)
+				due_time['year'] += years
+				added_time -= years * 525600
+		
+		due_dates[current_question] = due_time
+		due_dates[current_question]['interval'] = interval
+		
+		save_file(due_dates, due_path + mode + '.dat')
+		
+		streak += 1
+		
+		if streak == 5: #add new word
+			streak = 0
+			next_question()
+		else:
+			next_question()
 
+func adjust_time(time: Dictionary):
+	var time_intervals = ['minute', 'hour', 'day', 'month', 'year']
+	var time_limits = [60, 1440, 1440 * month_days[time['month']], 525600]
+	
+	for interval in range(time_intervals.size() - 1):
+		if time[time_intervals[interval]] >= time_limits[time_intervals[interval]]:
+			time[time_intervals[interval]] -= time_limits[time_intervals[interval]]
+			time[time_intervals[interval + 1]] += 1
+			
+			time_limits[2] = 1440 * month_days[time['month']]
+	return time
 
 func next_question():
 	lineedit.clear()
@@ -250,6 +283,8 @@ func _on_lineedit_focus_exited():
 
 
 func _on_show_answer_pressed():
+	streak = 0
+	
 	match mode:
 		'vocab_english':
 			lineedit.text = answers[current_question][0]
