@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://scenes and scripts/monster_sprite.gd" type="Script" id=1]
 [ext_resource path="res://sprites/monsters/Dog_inu.png" type="Texture" id=2]
@@ -41,6 +41,36 @@
 [ext_resource path="res://sprites/monsters/Green_midoriiro.png" type="Texture" id=39]
 [ext_resource path="res://sprites/monsters/Red_akai.png" type="Texture" id=40]
 [ext_resource path="res://sprites/monsters/Pink_pinku.png" type="Texture" id=41]
+[ext_resource path="res://sprites/monsters/AirConditioner_eakon.png" type="Texture" id=42]
+[ext_resource path="res://sprites/monsters/Flower_hana.png" type="Texture" id=43]
+[ext_resource path="res://sprites/monsters/Mushroom_kinoko.png" type="Texture" id=44]
+[ext_resource path="res://sprites/monsters/Beer_biiru.png" type="Texture" id=45]
+[ext_resource path="res://sprites/monsters/Golf_gorufu.png" type="Texture" id=46]
+[ext_resource path="res://sprites/monsters/Notebook_nooto.png" type="Texture" id=47]
+[ext_resource path="res://sprites/monsters/Blowfish_fugu.png" type="Texture" id=48]
+[ext_resource path="res://sprites/monsters/Dango_dango.png" type="Texture" id=49]
+[ext_resource path="res://sprites/monsters/Pen_pen.png" type="Texture" id=50]
+[ext_resource path="res://sprites/monsters/Ship_fune.png" type="Texture" id=51]
+[ext_resource path="res://sprites/monsters/Sushi_sushi.png" type="Texture" id=52]
+[ext_resource path="res://sprites/monsters/Telephone_denwa.png" type="Texture" id=53]
+[ext_resource path="res://sprites/monsters/Sumo_sumou.png" type="Texture" id=54]
+[ext_resource path="res://sprites/monsters/Car_kuruma.png" type="Texture" id=55]
+[ext_resource path="res://sprites/monsters/MobilePhone_keitai.png" type="Texture" id=56]
+[ext_resource path="res://sprites/monsters/Plane_Hikouki.png" type="Texture" id=57]
+[ext_resource path="res://sprites/monsters/Bread_pan.png" type="Texture" id=58]
+[ext_resource path="res://sprites/monsters/Guitar_gitaa.png" type="Texture" id=59]
+[ext_resource path="res://sprites/monsters/Baseball_yakyuu.png" type="Texture" id=60]
+[ext_resource path="res://sprites/monsters/Bowling_booringu.png" type="Texture" id=61]
+[ext_resource path="res://sprites/monsters/Tempura_tenpura.png" type="Texture" id=62]
+[ext_resource path="res://sprites/monsters/Samurai_samurai.png" type="Texture" id=63]
+[ext_resource path="res://sprites/monsters/Tennis_tenisu.png" type="Texture" id=64]
+[ext_resource path="res://sprites/monsters/Peach_momo.png" type="Texture" id=65]
+[ext_resource path="res://sprites/monsters/Train_densha.png" type="Texture" id=66]
+[ext_resource path="res://sprites/monsters/Tie_nekutai.png" type="Texture" id=67]
+[ext_resource path="res://sprites/monsters/House_uchi.png" type="Texture" id=68]
+[ext_resource path="res://sprites/monsters/Clock_tokei.png" type="Texture" id=69]
+[ext_resource path="res://sprites/monsters/Yakitori_yakitori.png" type="Texture" id=70]
+[ext_resource path="res://sprites/monsters/Yen_en.png" type="Texture" id=71]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -49,14 +79,34 @@ animations = [ {
 "name": "",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 42 ) ],
+"loop": true,
+"name": "airconditioner",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "apple",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 60 ) ],
+"loop": true,
+"name": "baseball",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 45 ) ],
+"loop": true,
+"name": "beer",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 32 ) ],
 "loop": true,
 "name": "black",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 48 ) ],
+"loop": true,
+"name": "blowfish",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 33 ) ],
@@ -69,6 +119,16 @@ animations = [ {
 "name": "book",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 61 ) ],
+"loop": true,
+"name": "bowling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 58 ) ],
+"loop": true,
+"name": "bread",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 30 ) ],
 "loop": true,
 "name": "brown",
@@ -77,6 +137,11 @@ animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "bus",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 55 ) ],
+"loop": true,
+"name": "car",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -89,9 +154,19 @@ animations = [ {
 "name": "chopsticks",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 69 ) ],
+"loop": true,
+"name": "clock",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "cookie",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 49 ) ],
+"loop": true,
+"name": "dango",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -114,6 +189,11 @@ animations = [ {
 "name": "five",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 43 ) ],
+"loop": true,
+"name": "flower",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "fork",
@@ -124,9 +204,24 @@ animations = [ {
 "name": "four",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 46 ) ],
+"loop": true,
+"name": "golf",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 39 ) ],
 "loop": true,
 "name": "green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 59 ) ],
+"loop": true,
+"name": "guitar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 68 ) ],
+"loop": true,
+"name": "house",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -149,9 +244,24 @@ animations = [ {
 "name": "milk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 56 ) ],
+"loop": true,
+"name": "mobilephone",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "mushroom",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "nine",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ) ],
+"loop": true,
+"name": "notebook",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ) ],
@@ -164,9 +274,24 @@ animations = [ {
 "name": "orange",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "peach",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 50 ) ],
+"loop": true,
+"name": "pen",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 41 ) ],
 "loop": true,
 "name": "pink",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 57 ) ],
+"loop": true,
+"name": "plane",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -179,9 +304,19 @@ animations = [ {
 "name": "red",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 63 ) ],
+"loop": true,
+"name": "samurai",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "seven",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ) ],
+"loop": true,
+"name": "ship",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 22 ) ],
@@ -204,9 +339,24 @@ animations = [ {
 "name": "stamp",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 54 ) ],
+"loop": true,
+"name": "sumo",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 52 ) ],
+"loop": true,
+"name": "sushi",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "taxi",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 53 ) ],
+"loop": true,
+"name": "telephone",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 38 ) ],
@@ -214,14 +364,34 @@ animations = [ {
 "name": "television",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 62 ) ],
+"loop": true,
+"name": "tempura",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
 "name": "ten",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 64 ) ],
+"loop": true,
+"name": "tennis",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "three",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 67 ) ],
+"loop": true,
+"name": "tie",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 66 ) ],
+"loop": true,
+"name": "train",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
@@ -239,9 +409,19 @@ animations = [ {
 "name": "white",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 70 ) ],
+"loop": true,
+"name": "yakitori",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 31 ) ],
 "loop": true,
 "name": "yellow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 71 ) ],
+"loop": true,
+"name": "yen",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ) ],
@@ -253,5 +433,5 @@ animations = [ {
 [node name="monster_sprite" type="AnimatedSprite"]
 position = Vector2( 1000, 340 )
 frames = SubResource( 4 )
-animation = ""
+animation = "airconditioner"
 script = ExtResource( 1 )

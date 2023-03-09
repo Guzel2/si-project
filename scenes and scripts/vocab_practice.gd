@@ -53,49 +53,52 @@ var answers = {
 	'dragon': ['たつ', 'tatsu', 'tatu'],
 	'television': ['テレビ', 'terebi'],
 	'knife': ['ナイフ', 'naifu'],
+	'beer': ['ビール', 'bru'],
+	'flower': ['はな', 'hana'],
+	'mushroom': ['きのこ', 'kinoko'],
+	'notebook': ['ノート', 'nooto'],
+	'sushi': ['すし', 'sushi'],
+	'airconditioner': ['エアコン', 'eakon'],
+	'dango': ['だんご', 'dango'],
+	'golf': ['ゴルフ', 'gorufu'],
+	'pen': ['ペン', 'pen'],
+	'plane': ['ひこうき', 'hikouki'],
+	'peach': ['もも', 'momo'],
+	'samurai': ['さむらい', 'samurai'],
+	'ship': ['ふね', 'fune'],
+	'blowfish': ['ふぐ', 'fugu'],
+	'sumo': ['すもう', 'sumou'],
+	'telephone': ['でんわ', 'denwa'],
+	'baseball': ['やきゅう', 'yakyuu'],
+	'bowling': ['ボーリング', 'booringu'],
+	'bread': ['パン', 'pan'],
+	'guitar': ['ギター', 'gitaa'],
+	'car': ['くるま', 'kuruma'],
+	'mobilephone': ['けいたい', 'keitai'],
+	'tennis': ['テニス', 'tenisu'],
+	'tie': ['ネクタイ', 'nekutai'],
+	'tempura': ['てんぷら', 'tenpura'],
+	'yakitori': ['やきとり', 'yakitori'],
+	'clock': ['とけい', 'tokei'],
+	'house': ['うち', 'uchi'],
+	'train': ['でんしゃ', 'densha'],
+	'yen': ['えん', 'en']
 }
 
 var all_questions = [
-	'apple', 
-	'bus', 
-	'cheese', 
-	'chopsticks', 
-	'cookie', 
-	'dog', 
-	'fork', 
-	'japan', 
-	'juice', 
-	'milk', 
-	'ramen', 
-	'soccer', 
-	'spoon', 
-	'stamp', 
-	'taxi', 
-	'umbrella', 
-	'one', 
-	'two', 
-	'three', 
-	'four',
-	'five',
-	'six',
-	'seven',
-	'eight',
-	'nine',
-	'ten',
-	'zero',
-	'black',
-	'white',
-	'yellow',
-	'brown',
-	'blue',
-	'green',
-	'red',
-	'orange',
-	'pink',
-	'book',
-	'dragon',
-	'television',
-	'knife',
+	'apple', 'bus', 'cheese', 'chopsticks', 'cookie', 
+	'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 
+	'soccer', 'spoon', 'stamp', 'taxi', 'umbrella', 
+	'one', 'two', 'three', 'four', 'five', 'six', 
+	'seven', 'eight', 'nine', 'ten', 'zero', 'black', 
+	'white', 'yellow', 'brown', 'blue', 'green', 'red', 
+	'orange', 'pink', 'book', 'dragon', 'television', 
+	'knife', 'beer', 'flower', 'mushroom', 'notebook', 
+	'sushi', 'airconditioner', 'dango', 'golf', 'pen', 
+	'plane', 'peach', 'samurai', 'ship', 'blowfish', 
+	'sumo', 'telephone', 'baseball', 'bowling', 'bread', 
+	'guitar', 'car', 'mobilephone', 'tennis', 'tie', 
+	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen'
 	]
 
 var due_questions = []
@@ -125,14 +128,12 @@ func _ready():
 		due_dates = data
 	else:
 		var current_date = OS.get_datetime()
-		for x in range(5):
-			due_dates[all_questions[x]] = current_date
-			due_dates['interval'] = 0
+		for question in all_questions:
+			due_dates[question] = current_date
+			due_dates[question]['interval'] = 0
 		
 		save_file(due_dates, due_path + mode + '.dat')
 	
-	print(due_dates)
-
 
 func start_new_round():
 	var current_date = OS.get_datetime()
@@ -147,9 +148,7 @@ func start_new_round():
 			elif due_dates[new_question][interval] > current_date[interval]:
 				break
 	
-	print(due_questions)
-	
-	#due_questions = all_questions.duplicate()
+	due_questions = all_questions.duplicate()
 	
 	if due_questions.size() == 0: #if there are no due questions, what do?
 		due_questions = ['zero']
@@ -239,8 +238,8 @@ func adjust_time(time: Dictionary):
 	var time_limits = [60, 1440, 1440 * month_days[time['month']], 525600]
 	
 	for interval in range(time_intervals.size() - 1):
-		if time[time_intervals[interval]] >= time_limits[time_intervals[interval]]:
-			time[time_intervals[interval]] -= time_limits[time_intervals[interval]]
+		if time[time_intervals[interval]] >= time_limits[interval]:
+			time[time_intervals[interval]] -= time_limits[interval]
 			time[time_intervals[interval + 1]] += 1
 			
 			time_limits[2] = 1440 * month_days[time['month']]

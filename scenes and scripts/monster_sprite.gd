@@ -5,7 +5,21 @@ var should_move = false
 var phase = -1
 var timer = 0
 
-var list_of_animations = ['apple', 'bus', 'cheese', 'chopsticks', 'cookie', 'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 'soccer', 'spoon', 'stamp', 'taxi', 'umbrella', 'one', 'two', 'three', 'four']
+var list_of_animations = [
+	'apple', 'bus', 'cheese', 'chopsticks', 'cookie', 
+	'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 
+	'soccer', 'spoon', 'stamp', 'taxi', 'umbrella', 
+	'one', 'two', 'three', 'four', 'five', 'six', 
+	'seven', 'eight', 'nine', 'ten', 'zero', 'black', 
+	'white', 'yellow', 'brown', 'blue', 'green', 'red', 
+	'orange', 'pink', 'book', 'dragon', 'television', 
+	'knife', 'beer', 'flower', 'mushroom', 'notebook', 
+	'sushi', 'airconditioner', 'dango', 'golf', 'pen', 
+	'plane', 'peach', 'samurai', 'ship', 'blowfish', 
+	'sumo', 'telephone', 'baseball', 'bowling', 'bread', 
+	'guitar', 'car', 'mobilephone', 'tennis', 'tie', 
+	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen'
+	]
 
 var mode
 var question
