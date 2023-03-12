@@ -8,6 +8,7 @@ onready var camera = find_node('camera')
 onready var character = find_node('character')
 onready var monster = find_node('monster')
 onready var highscore_label = find_node('highscore_label')
+onready var new_word = find_node('new_word')
 
 var question
 
@@ -128,17 +129,21 @@ func _ready():
 		due_dates = data
 	else:
 		var current_date = OS.get_datetime()
-		for question in all_questions:
-			due_dates[question] = current_date
-			due_dates[question]['interval'] = 0
+		for x in range(10):
+			due_dates[all_questions[x]] = current_date
+			due_dates[all_questions[x]]['interval'] = 0
 		
 		save_file(due_dates, due_path + mode + '.dat')
-	
+
 
 func start_new_round():
+	streak = 0
+	
 	var current_date = OS.get_datetime()
 	
 	var time_intervals = ['year', 'month', 'day', 'hour', 'minute', 'second']
+	
+	due_questions.clear()
 	
 	for new_question in due_dates.keys():
 		for interval in time_intervals:
@@ -147,8 +152,6 @@ func start_new_round():
 				break
 			elif due_dates[new_question][interval] > current_date[interval]:
 				break
-	
-	due_questions = all_questions.duplicate()
 	
 	if due_questions.size() == 0: #if there are no due questions, what do?
 		due_questions = ['zero']
@@ -191,47 +194,48 @@ func complete_question():
 		monster.sprite_dies()
 		character.phase = 1 #start attack
 		
-		var current_time = OS.get_datetime()
 		var interval = due_dates[current_question]['interval']
-		var added_time = pow(2, interval)
-		var due_time = current_time.duplicate()
+		var added_time = 3 * pow(interval, 4)
+		var due_time = OS.get_datetime()
 		
-		while added_time > 0:
-			if added_time < 60: #add to minutes
-				due_time['minute'] += added_time
-				added_time -= added_time
-				adjust_time(due_time)
-			elif added_time < 1400: #add to hours
-				var hours = floor(added_time/60)
-				due_time['hour'] += hours
-				added_time -= hours * 60
-				adjust_time(due_time)
-			elif added_time < 1440 * month_days[current_time['month']]: #add to days
-				var days = floor(added_time/1440)
-				due_time['day'] += days
-				added_time -= days * 1440
-				adjust_time(due_time)
-			elif added_time < 525600: #add to month
-				var months = floor(added_time/1440 * month_days[current_time['month']])
-				due_time['months'] += months
-				added_time -= months * 1440 * month_days[current_time['month']]
-			else: #add to year
-				var years = floor(added_time/525600)
-				due_time['year'] += years
-				added_time -= years * 525600
+		due_time = add_time(due_time, added_time)
 		
 		due_dates[current_question] = due_time
-		due_dates[current_question]['interval'] = interval
+		due_dates[current_question]['interval'] = interval + 1
 		
 		save_file(due_dates, due_path + mode + '.dat')
 		
 		streak += 1
 		
 		if streak == 5: #add new word
-			streak = 0
-			next_question()
+			if due_dates.keys().size() <= all_questions.size():
+				streak = 0
+				new_question()
+			else:
+				next_question()
 		else:
 			next_question()
+
+
+func add_time(time: Dictionary, added_time: int):
+	var time_intervals = ['seconds', 'minute', 'hour', 'day', 'month', 'year']
+	var time_limits = [1, 60, 1440, 1440 * month_days[time['month']], 525600, 100000000000000000]
+	
+	while added_time > 0:
+		time_limits[3] = 1440 * month_days[time['month']]
+		
+		for limit in range(1, 5):
+			if added_time < time_limits[limit]:
+				var modified_time = floor(added_time / time_limits[limit - 1])
+				
+				time[time_intervals[limit]] += modified_time
+				added_time -= modified_time * time_limits[limit - 1]
+				time = adjust_time(time)
+				
+				break
+	
+	return time
+
 
 func adjust_time(time: Dictionary):
 	var time_intervals = ['minute', 'hour', 'day', 'month', 'year']
@@ -243,11 +247,27 @@ func adjust_time(time: Dictionary):
 			time[time_intervals[interval + 1]] += 1
 			
 			time_limits[2] = 1440 * month_days[time['month']]
+	
 	return time
 
+
+func new_question():
+	new_word.visible = true
+	
+	lineedit.clear()
+	current_question = all_questions[due_dates.keys().size()]
+	due_dates[current_question] = OS.get_datetime()
+	due_dates[current_question]['interval'] = 0
+	
+	monster.set_question(current_question, mode)
+
+
 func next_question():
+	new_word.visible = false
+	
 	lineedit.clear()
 	current_question = due_questions.pop_front()
+	
 	monster.set_question(current_question, mode)
 
 
@@ -255,6 +275,9 @@ func _on_lineedit_focus_entered():
 	if !just_showed_answer:
 		start_new_round()
 	else:
+		due_dates[current_question] = OS.get_datetime()
+		due_dates[current_question]['interval'] = 0
+		
 		lineedit.placeholder_text = 'translate'
 		monster.sprite_flews()
 		due_questions.append(current_question)
