@@ -83,7 +83,17 @@ var answers = {
 	'clock': ['とけい', 'tokei'],
 	'house': ['うち', 'uchi'],
 	'train': ['でんしゃ', 'densha'],
-	'yen': ['えん', 'en']
+	'yen': ['えん', 'en'],
+	'shoe': ['くつ', 'kutsu', 'kutu'], 
+	't-shirt': ['ティーシャツ', 'tiishatsu'], 
+	'tabel': ['テーブル', 'teeburu'],
+	'coffee': ['コーヒー', 'koohii'], 
+	'computer': ['コンピューター', 'konpyuuta'],
+	'manga': ['', 'manga'],
+	'tea': ['おちゃ', 'ocha'],
+	'trousers': ['ズボン', 'zubon'],
+	'newspaper': ['しんぶん', 'shinbun'],
+	'key': ['かがみ', 'kagami']
 }
 
 var all_questions = [
@@ -99,7 +109,9 @@ var all_questions = [
 	'plane', 'peach', 'samurai', 'ship', 'blowfish', 
 	'sumo', 'telephone', 'baseball', 'bowling', 'bread', 
 	'guitar', 'car', 'mobilephone', 'tennis', 'tie', 
-	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen'
+	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen',
+	'shoe', 't-shirt', 'tabel', 'coffee', 'computer', 'manga',
+	'tea', 'trousers', 'newspaper', 'key'
 	]
 
 var due_questions = []

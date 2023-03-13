@@ -18,7 +18,9 @@ var list_of_animations = [
 	'plane', 'peach', 'samurai', 'ship', 'blowfish', 
 	'sumo', 'telephone', 'baseball', 'bowling', 'bread', 
 	'guitar', 'car', 'mobilephone', 'tennis', 'tie', 
-	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen'
+	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen',
+	'shoe', 't-shirt', 'tabel', 'coffee', 'computer', 'manga',
+	'tea', 'trousers', 'newspaper', 'key'
 	]
 
 var mode

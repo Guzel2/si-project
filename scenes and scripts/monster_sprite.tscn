@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://scenes and scripts/monster_sprite.gd" type="Script" id=1]
 [ext_resource path="res://sprites/monsters/Dog_inu.png" type="Texture" id=2]
@@ -71,6 +71,15 @@
 [ext_resource path="res://sprites/monsters/Clock_tokei.png" type="Texture" id=69]
 [ext_resource path="res://sprites/monsters/Yakitori_yakitori.png" type="Texture" id=70]
 [ext_resource path="res://sprites/monsters/Yen_en.png" type="Texture" id=71]
+[ext_resource path="res://sprites/monsters/Shoes_kutsu.png" type="Texture" id=72]
+[ext_resource path="res://sprites/monsters/Key_kagi.png" type="Texture" id=73]
+[ext_resource path="res://sprites/monsters/Tabel_teeburu.png" type="Texture" id=74]
+[ext_resource path="res://sprites/monsters/Coffee_koohii.png" type="Texture" id=75]
+[ext_resource path="res://sprites/monsters/T-Shirt_tiishatsu.png" type="Texture" id=76]
+[ext_resource path="res://sprites/monsters/Computer_konpyuutaa.png" type="Texture" id=77]
+[ext_resource path="res://sprites/monsters/Manga_manga.png" type="Texture" id=78]
+[ext_resource path="res://sprites/monsters/Tea_ocha.png" type="Texture" id=79]
+[ext_resource path="res://sprites/monsters/Newspaper_shinbun.png" type="Texture" id=80]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -159,6 +168,16 @@ animations = [ {
 "name": "clock",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 75 ) ],
+"loop": true,
+"name": "coffee",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 77 ) ],
+"loop": true,
+"name": "computer",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "cookie",
@@ -234,9 +253,19 @@ animations = [ {
 "name": "juice",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 73 ) ],
+"loop": true,
+"name": "key",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 36 ) ],
 "loop": true,
 "name": "knife",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 78 ) ],
+"loop": true,
+"name": "manga",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -252,6 +281,11 @@ animations = [ {
 "frames": [ ExtResource( 44 ) ],
 "loop": true,
 "name": "mushroom",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 80 ) ],
+"loop": true,
+"name": "newspaper",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ) ],
@@ -319,6 +353,11 @@ animations = [ {
 "name": "ship",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 72 ) ],
+"loop": true,
+"name": "shoe",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "six",
@@ -349,9 +388,24 @@ animations = [ {
 "name": "sushi",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 76 ) ],
+"loop": true,
+"name": "t-shirt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 74 ) ],
+"loop": true,
+"name": "tabel",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "taxi",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 79 ) ],
+"loop": true,
+"name": "tea",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 53 ) ],
@@ -394,6 +448,11 @@ animations = [ {
 "name": "train",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "trousers",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "two",
@@ -433,5 +492,5 @@ animations = [ {
 [node name="monster_sprite" type="AnimatedSprite"]
 position = Vector2( 1000, 340 )
 frames = SubResource( 4 )
-animation = "airconditioner"
+animation = "newspaper"
 script = ExtResource( 1 )
