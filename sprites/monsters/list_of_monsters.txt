@@ -22,18 +22,18 @@
 22. Yakitori　やきとり
 23. Tempura　てんぷら
 24. Ramen　ラーメン
-25. Curryreis　カレーライス
+25. Mochi　もち
 26. Löffel　スプーン
 27. Essstäbchen　おはし
 28. Gabel　フォーク
-29. Berg　やま
-30. Wald　もり
+29. Videospiel　ゲーム
+30. Pilz きのこ
 31. Klo　トイレ
 32. Haus　うち
 33. Katze　ねこ
 34. Computer　コンピューター
 35. Buch　ほん
-36. Bücherregal　ほんだな
+36. Stuhl　いす
 37. Klimaanlage　エアコン
 38. Hund　いぬ
 39. Telefon　でんわ
@@ -46,7 +46,7 @@
 46. Krawatte　ネクタイ
 47. Schuhe　くつ
 48. Yen　えん
-49. Vending Machine　じどうはんばいき
+49. Schlüssel　かぎ
 50. Manga　まんが
 51. Basketball　バスケットボール
 52. Tennis　テニス
@@ -56,7 +56,7 @@
 56. Handy　けいたい
 57. Stift　ペン
 58. Golf　ゴルフ
-59. Volleyball　バレーボール
+59. Kendo　けんどう
 60. Bowling　ボーリング
 61. Bahn　でんしゃ
 62. Auto　くるま　
@@ -65,8 +65,8 @@
 65. Flugzeug　ひこうき
 66. Motorrad　バイク
 67. Zeitung　しんぶん
-68. Polizeibox　こうばん
-69. Krankenhaus　びょういん
+68. Dango だんご
+69. Onigiri おにぎり
 70. Tisch　テーブル
 71. Eins　いち
 72. Zwei　に
@@ -91,10 +91,10 @@
 91. Streichhölzer　マッチ
 92. Radio　ラジオ
 93. Spinne　くも
-94. Zikade　セミ　
-95. Fuchs　きつね
-96. Dämon　ようかい
-97. Tempel　おてら　
-98. Karaoke　カラオケ
+94. Hundertfüßer　ムカデ　
+95. Gottesanbeterin　かまきり
+96. Uhr　とけい
+97. Tempeltor　とりい　
+98. Kaffe コーヒー
 99. Hose　ズボン
 100. Regenschirm　かさ
