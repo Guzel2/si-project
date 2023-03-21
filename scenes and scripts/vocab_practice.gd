@@ -176,6 +176,8 @@ func start_new_round():
 
 
 func end_round():
+	parent.return_to_home()
+	
 	active = false
 	
 	reset_lineedit.grab_focus()

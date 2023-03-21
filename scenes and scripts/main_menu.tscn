@@ -13,14 +13,14 @@ font_data = ExtResource( 3 )
 [node name="main_menu" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="hira_practice" type="TextureButton" parent="."]
+[node name="hiragana" type="TextureButton" parent="."]
 margin_left = 61.0
 margin_top = 76.0
 margin_right = 691.0
 margin_bottom = 276.0
 texture_normal = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="hira_practice"]
+[node name="Label" type="Label" parent="hiragana"]
 margin_left = 94.0
 margin_top = 43.0
 margin_right = 507.0
@@ -31,14 +31,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="kata_practice" type="TextureButton" parent="."]
+[node name="katakana" type="TextureButton" parent="."]
 margin_left = 49.0
 margin_top = 370.0
 margin_right = 679.0
 margin_bottom = 570.0
 texture_normal = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="kata_practice"]
+[node name="Label" type="Label" parent="katakana"]
 margin_left = 94.0
 margin_top = 43.0
 margin_right = 507.0
@@ -87,7 +87,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="pressed" from="hira_practice" to="." method="_on_hira_practice_pressed"]
-[connection signal="pressed" from="kata_practice" to="." method="_on_kata_practice_pressed"]
+[connection signal="pressed" from="hiragana" to="." method="_on_hiragana_pressed"]
+[connection signal="pressed" from="katakana" to="." method="_on_katakana_pressed"]
 [connection signal="pressed" from="vocab_practice" to="." method="_on_vocab_practice_pressed"]
 [connection signal="pressed" from="vocab_practice2" to="." method="_on_vocab_practice2_pressed"]
