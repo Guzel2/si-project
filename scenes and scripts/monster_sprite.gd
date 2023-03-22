@@ -20,7 +20,11 @@ var list_of_animations = [
 	'guitar', 'car', 'mobilephone', 'tennis', 'tie', 
 	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen',
 	'shoe', 't-shirt', 'tabel', 'coffee', 'computer', 'manga',
-	'tea', 'trousers', 'newspaper', 'key'
+	'tea', 'trousers', 'newspaper', 'key', #all after line 23 are not in sprites
+	'basketball', 'kendo', 'onigiri', 'radio', 'spider',
+	'camera', 'chair', 'dress', 'matches', 'suit',
+	'bicycle', 'cat', 'centipede', 'mantis', 'mochi',
+	'motorcycle', 'temple_gate', 'toilet', 'video_game', 'violin' 
 	]
 
 var mode

@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://scenes and scripts/monster_sprite.gd" type="Script" id=1]
 [ext_resource path="res://sprites/monsters/Dog_inu.png" type="Texture" id=2]
@@ -80,6 +80,26 @@
 [ext_resource path="res://sprites/monsters/Manga_manga.png" type="Texture" id=78]
 [ext_resource path="res://sprites/monsters/Tea_ocha.png" type="Texture" id=79]
 [ext_resource path="res://sprites/monsters/Newspaper_shinbun.png" type="Texture" id=80]
+[ext_resource path="res://sprites/monsters/TempleGate_Torii.png" type="Texture" id=81]
+[ext_resource path="res://sprites/monsters/Spider_kumo.png" type="Texture" id=82]
+[ext_resource path="res://sprites/monsters/Dress_wanpiisu.png" type="Texture" id=83]
+[ext_resource path="res://sprites/monsters/Radio_rajio.png" type="Texture" id=84]
+[ext_resource path="res://sprites/monsters/Chair_isu.png" type="Texture" id=85]
+[ext_resource path="res://sprites/monsters/Kendo_kendou.png" type="Texture" id=86]
+[ext_resource path="res://sprites/monsters/Suit_sebiro.png" type="Texture" id=87]
+[ext_resource path="res://sprites/monsters/Centipede_mukade.png" type="Texture" id=88]
+[ext_resource path="res://sprites/monsters/Bicycle_jitensha.png" type="Texture" id=89]
+[ext_resource path="res://sprites/monsters/Mantis_kamakiri.png" type="Texture" id=90]
+[ext_resource path="res://sprites/monsters/Mochi_mochi.png" type="Texture" id=91]
+[ext_resource path="res://sprites/monsters/Motorcycle_baiku.png" type="Texture" id=92]
+[ext_resource path="res://sprites/monsters/Toilet_toire.png" type="Texture" id=93]
+[ext_resource path="res://sprites/monsters/VideoGame_geemu.png" type="Texture" id=94]
+[ext_resource path="res://sprites/monsters/Onigiri_onigiri.png" type="Texture" id=95]
+[ext_resource path="res://sprites/monsters/Camera_kamera.png" type="Texture" id=96]
+[ext_resource path="res://sprites/monsters/Basketball_basukettobooru.png" type="Texture" id=97]
+[ext_resource path="res://sprites/monsters/Cat_neko.png" type="Texture" id=98]
+[ext_resource path="res://sprites/monsters/Violin_baiorin.png" type="Texture" id=99]
+[ext_resource path="res://sprites/monsters/Matches_matchi.png" type="Texture" id=100]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -103,9 +123,19 @@ animations = [ {
 "name": "baseball",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 97 ) ],
+"loop": true,
+"name": "basketball",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 45 ) ],
 "loop": true,
 "name": "beer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 89 ) ],
+"loop": true,
+"name": "bicycle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 32 ) ],
@@ -148,9 +178,29 @@ animations = [ {
 "name": "bus",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 96 ) ],
+"loop": true,
+"name": "camera",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 55 ) ],
 "loop": true,
 "name": "car",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 98 ) ],
+"loop": true,
+"name": "cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 88 ) ],
+"loop": true,
+"name": "centipede",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 85 ) ],
+"loop": true,
+"name": "chair",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -196,6 +246,11 @@ animations = [ {
 "frames": [ ExtResource( 34 ) ],
 "loop": true,
 "name": "dragon",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 83 ) ],
+"loop": true,
+"name": "dress",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 28 ) ],
@@ -253,6 +308,11 @@ animations = [ {
 "name": "juice",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 86 ) ],
+"loop": true,
+"name": "kendo",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 73 ) ],
 "loop": true,
 "name": "key",
@@ -268,6 +328,16 @@ animations = [ {
 "name": "manga",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 90 ) ],
+"loop": true,
+"name": "mantis",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 100 ) ],
+"loop": true,
+"name": "matches",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "milk",
@@ -276,6 +346,16 @@ animations = [ {
 "frames": [ ExtResource( 56 ) ],
 "loop": true,
 "name": "mobilephone",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 91 ) ],
+"loop": true,
+"name": "mochi",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 92 ) ],
+"loop": true,
+"name": "motorcycle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 44 ) ],
@@ -303,6 +383,11 @@ animations = [ {
 "name": "one",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 95 ) ],
+"loop": true,
+"name": "onigiri",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 35 ) ],
 "loop": true,
 "name": "orange",
@@ -326,6 +411,11 @@ animations = [ {
 "frames": [ ExtResource( 57 ) ],
 "loop": true,
 "name": "plane",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 84 ) ],
+"loop": true,
+"name": "radio",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -358,6 +448,11 @@ animations = [ {
 "name": "shoe",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 72 ) ],
+"loop": true,
+"name": "shoes",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "six",
@@ -368,6 +463,11 @@ animations = [ {
 "name": "soccer",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 82 ) ],
+"loop": true,
+"name": "spider",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "spoon",
@@ -376,6 +476,11 @@ animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "stamp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 87 ) ],
+"loop": true,
+"name": "suit",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 54 ) ],
@@ -398,6 +503,11 @@ animations = [ {
 "name": "tabel",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 74 ) ],
+"loop": true,
+"name": "table",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "taxi",
@@ -416,6 +526,11 @@ animations = [ {
 "frames": [ ExtResource( 38 ) ],
 "loop": true,
 "name": "television",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 81 ) ],
+"loop": true,
+"name": "temple_gate",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 62 ) ],
@@ -443,6 +558,11 @@ animations = [ {
 "name": "tie",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 93 ) ],
+"loop": true,
+"name": "toilet",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 66 ) ],
 "loop": true,
 "name": "train",
@@ -461,6 +581,16 @@ animations = [ {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "umbrella",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 94 ) ],
+"loop": true,
+"name": "video_game",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 99 ) ],
+"loop": true,
+"name": "violin",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 37 ) ],
@@ -492,5 +622,5 @@ animations = [ {
 [node name="monster_sprite" type="AnimatedSprite"]
 position = Vector2( 1000, 340 )
 frames = SubResource( 4 )
-animation = "newspaper"
+animation = "violin"
 script = ExtResource( 1 )
