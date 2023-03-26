@@ -89,11 +89,11 @@ func _ready():
 	find_node('daily_label').text = 'Daily Practice\n Due Words: ' + String(due_questions.size())
 	
 	if due_dates.size() < 10:
-		find_node('nature_label').text += ' (locked)'
+		find_node('nature_label').text += '(locked)'
 	if due_dates.size() < 20:
-		find_node('city_label').text += ' (locked)'
+		find_node('city_label').text += '(locked)'
 	if due_dates.size() < 40:
-		find_node('food_label').text += ' (locked)'
+		find_node('food_label').text += '(locked)'
 
 func _on_daily_pressed():
 	if due_questions.size() == 0: #if there are no due questions, what do?

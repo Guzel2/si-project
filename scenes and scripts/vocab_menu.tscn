@@ -57,7 +57,7 @@ margin_right = 691.0
 margin_bottom = 825.0
 texture_normal = ExtResource( 3 )
 
-[node name="city_tabel" type="Label" parent="city"]
+[node name="city_label" type="Label" parent="city"]
 margin_left = 94.0
 margin_top = 43.0
 margin_right = 507.0
@@ -76,7 +76,7 @@ margin_right = 691.0
 margin_bottom = 1100.0
 texture_normal = ExtResource( 3 )
 
-[node name="food_tabel" type="Label" parent="food"]
+[node name="food_label" type="Label" parent="food"]
 margin_left = 94.0
 margin_top = 43.0
 margin_right = 507.0
