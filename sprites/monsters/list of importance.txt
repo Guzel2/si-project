@@ -1,0 +1,17 @@
+1. Nature (11)
+2. City (20)
+3. Food (17)
+4. Numbers (11)
+5. Household (21)
+6. Activities (11)
+7. Colors (9)
+
+
+
+1. City (20)
+2. Household (21)
+3. Food (17)
+4. Nature (11)
+5. Activities (11)
+6. Numbers (11)
+7. Colors (9)

@@ -121,7 +121,7 @@ var synonyms = {
 	'apple': ['apple'], 
 	'bus': ['bus'], 
 	'cheese': ['cheese'], 
-	'chopsticks': ['chopsticks', 'chopstick'], 
+	'chopsticks': ['chopsticks'], 
 	'cookie': ['cookie', 'biscuit'], 
 	'dog': ['dog'], 
 	'fork': ['fork'], 
@@ -221,25 +221,26 @@ var synonyms = {
 	}
 
 var all_questions = [
-	'apple', 'bus', 'cheese', 'chopsticks', 'cookie', 
-	'dog', 'fork', 'japan', 'juice', 'milk', 'ramen', 
-	'soccer', 'spoon', 'stamp', 'taxi', 'umbrella', 
-	'one', 'two', 'three', 'four', 'five', 'six', 
-	'seven', 'eight', 'nine', 'ten', 'zero', 'black', 
-	'white', 'yellow', 'brown', 'blue', 'green', 'red', 
-	'orange', 'pink', 'book', 'dragon', 'television', 
-	'knife', 'beer', 'flower', 'mushroom', 'notebook', 
-	'sushi', 'airconditioner', 'dango', 'golf', 'pen', 
-	'plane', 'peach', 'samurai', 'ship', 'blowfish', 
-	'sumo', 'telephone', 'baseball', 'bowling', 'bread', 
-	'guitar', 'car', 'mobilephone', 'tennis', 'tie', 
-	'tempura', 'yakitori', 'clock', 'house', 'train', 'yen',
-	'shoe', 't-shirt', 'tabel', 'coffee', 'computer', 'manga',
-	'tea', 'trousers', 'newspaper', 'key', 'basketball', 
-	'kendo', 'onigiri', 'radio', 'spider', 'camera', 'chair', 
-	'dress', 'matches', 'suit', 'bicycle', 'cat', 
-	'centipede', 'mantis', 'mochi', 'motorcycle', 
-	'temple_gate', 'toilet', 'video_game', 'violin' 
+	#start stuff
+	'japan', 'apple', 'chopsticks', 'toilet',
+	#nature
+	'flower', 'mushroom', 'cat', 'dog', 'spider', 'centipede', 'mantis', 'dragon', 'blowfish', 'temple_gate',
+	#city
+	'ship', 'house', 'bicycle', 'camera', 'dress', 't-shirt', 'suit', 'tie', 'shoes', 'yen', 'stamp',
+	'mobilephone', 'train', 'car', 'taxi', 'bus', 'plane', 'motorcycle', 'trousers', 'umbrella',
+	#food
+	'beer', 'sushi', 'peach', 'cookie', 'juice', 'cheese', 'tea', 'milk', 'yakitori',
+	'tempura', 'ramen', 'mochi', 'bread', 'dango', 'onigiri', 'coffee',
+	#numbers
+	'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'zero',
+	#household
+	'knife', 'notebook', 'television', 'spoon', 'fork', 'video_game',
+	'computer', 'book', 'chair', 'telephone', 'key', 'manga', 'pen', 'newspaper', 'table',
+	'matches', 'radio', 'airconditioner', 'clock',
+	#activities
+	'soccer', 'basketball', 'tennis', 'baseball', 'golf', 'kendo', 'bowling', 'samurai', 'sumo', 'violin', 'guitar',
+	#color
+	'red', 'white', 'black', 'green', 'blue', 'yellow', 'pink', 'brown', 'orange'
 	]
 
 var due_questions = []
@@ -263,42 +264,14 @@ var streak = 0
 func _ready():
 	randomize()
 	mode = parent.mode
+	due_questions = parent.due_questions
 	
-	var data = read_file(due_path + mode + '.dat')
-	if data != null: #
-		due_dates = data
-	else:
-		var current_date = OS.get_datetime()
-		for x in range(10):
-			due_dates[all_questions[x]] = current_date
-			due_dates[all_questions[x]]['interval'] = 0
-		
-		save_file(due_dates, due_path + mode + '.dat')
+	
+	due_dates = read_file(due_path + mode + '.dat')
 
 
 func start_new_round():
-	streak = 0
-	
-	var current_date = OS.get_datetime()
-	
-	var time_intervals = ['year', 'month', 'day', 'hour', 'minute', 'second']
-	
-	due_questions.clear()
-	
-	for new_question in due_dates.keys():
-		for interval in time_intervals:
-			if due_dates[new_question][interval] < current_date[interval]:
-				due_questions.append(new_question)
-				break
-			elif due_dates[new_question][interval] > current_date[interval]:
-				break
-	
-	if due_questions.size() == 0: #if there are no due questions, what do?
-		due_questions = ['zero']
-	
 	lineedit.placeholder_text = 'translate'
-	active = true
-	due_questions.shuffle()
 	
 	next_question()
 
@@ -349,7 +322,7 @@ func complete_question():
 		
 		streak += 1
 		
-		if streak == 5: #add new word
+		if streak == 4: #add new word
 			if due_dates.keys().size() <= all_questions.size():
 				streak = 0
 				new_question()

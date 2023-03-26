@@ -13,6 +13,7 @@ var node_paths = {
 }
 
 var mode = 'vocab_english'
+var due_questions
 
 var current_node = null
 
