@@ -106,12 +106,12 @@ var answers = {
 	'suit': ['せびろ', 'sebiro'],
 	'bicycle': ['じてんしゃ', 'jitensha'], 
 	'cat': ['ねこ', 'neko'], 
-	'centipede': ['ムカデ', 'makade'], 
+	'centipede': ['ムカデ', 'mukade'], 
 	'mantis': ['カマキリ', 'kamakiri'], 
 	'mochi': ['もち', 'mochi'],
 	'motorcycle': ['バイク', 'paiku'], 
 	'temple_gate': ['とりい', 'torii'], 
-	'toilet': ['トイレ', 'toiru'],
+	'toilet': ['トイレ', 'toire'],
 	'video_game': ['ゲーム', 'geemu'], 
 	'violin': ['バイオリン', 'baiorin']
 }
