@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes and scripts/vocab_practice.gd" type="Script" id=1]
-[ext_resource path="res://sprites/character/cat.png" type="Texture" id=2]
+[ext_resource path="res://sprites/character/Katana_Kat_Still.png" type="Texture" id=2]
 [ext_resource path="res://scenes and scripts/character.gd" type="Script" id=3]
 [ext_resource path="res://scenes and scripts/monster.gd" type="Script" id=4]
 [ext_resource path="res://assets/NotoSansJP-Regular.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://sprites/ui/small_button.png" type="Texture" id=6]
 [ext_resource path="res://sprites/backgrounds/Land_BG_blurred.png" type="Texture" id=7]
+[ext_resource path="res://sprites/character/Katana_Kat.png" type="Texture" id=8]
+[ext_resource path="res://sprites/character/Katana_Kat_Zwischenframe.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -26,8 +28,13 @@ font_data = ExtResource( 5 )
 size = 50
 font_data = ExtResource( 5 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "hit",
+"speed": 9.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "idle",
@@ -46,6 +53,7 @@ font_data = ExtResource( 5 )
 script = ExtResource( 1 )
 
 [node name="bg" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 6 )
 animation = "nature"
 centered = false
@@ -71,9 +79,11 @@ custom_fonts/font = SubResource( 1 )
 align = 1
 
 [node name="character" type="AnimatedSprite" parent="."]
-position = Vector2( 135, 600 )
-frames = SubResource( 2 )
+position = Vector2( 207, 547 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 7 )
 animation = "idle"
+playing = true
 script = ExtResource( 3 )
 
 [node name="camera" type="Camera2D" parent="."]
@@ -119,6 +129,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[connection signal="animation_finished" from="character" to="character" method="_on_character_animation_finished"]
 [connection signal="focus_entered" from="lineedit" to="." method="_on_lineedit_focus_entered"]
 [connection signal="focus_exited" from="lineedit" to="." method="_on_lineedit_focus_exited"]
 [connection signal="text_changed" from="lineedit" to="." method="_on_lineedit_text_changed"]

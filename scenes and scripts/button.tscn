@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/ui/button_pressed.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ui/button.png" type="Texture" id=2]
+[ext_resource path="res://assets/Fonts/Gotham-Bold.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes and scripts/button.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 3 )
+
+[node name="button" type="TextureButton"]
+margin_right = 630.0
+margin_bottom = 200.0
+keep_pressed_outside = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+script = ExtResource( 4 )
+text = "Hiragana"
+
+[node name="label" type="Label" parent="."]
+margin_right = 630.0
+margin_bottom = 185.0
+custom_fonts/font = SubResource( 1 )
+text = "Hiragana"
+align = 1
+valign = 1
