@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Fonts/MSGOTHIC.TTF" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
-size = 80
+size = 110
 font_data = ExtResource( 1 )
 
 [resource]

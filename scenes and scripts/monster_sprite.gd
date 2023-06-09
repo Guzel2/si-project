@@ -49,7 +49,7 @@ func _ready():
 
 func _process(delta):
 	if should_move:
-		if set_position_to(Vector2(450, 340), 8):
+		if set_position_to(Vector2(450, 400), 8):
 			should_move = false
 	
 	match phase:
@@ -75,7 +75,7 @@ func _process(delta):
 				should_die = false
 			if !set_scale_to(Vector2(1.25, .75), 20):
 				should_die = false
-			if !set_position_to(Vector2(430, 340), 10):
+			if !set_position_to(Vector2(430, 400), 10):
 				should_die = false
 			
 			if should_die:
@@ -88,7 +88,7 @@ func _process(delta):
 			if !set_scale_to(Vector2(1.2, .88), 8):
 				next_phase = false
 				print('sca')
-			if !set_position_to(Vector2(465, 340), 9):
+			if !set_position_to(Vector2(465, 400), 9):
 				next_phase = false
 				print('pos')
 			

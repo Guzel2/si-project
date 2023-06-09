@@ -37,20 +37,20 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="questions_english" type="Label" parent="monster"]
-margin_left = 216.0
+margin_left = 112.0
 margin_top = 40.0
 margin_right = 719.0
-margin_bottom = 140.0
+margin_bottom = 170.0
 theme = ExtResource( 12 )
 text = "Sussy"
 align = 1
 valign = 1
 
 [node name="questions_japanese" type="Label" parent="monster"]
-margin_left = 216.0
+margin_left = 112.0
 margin_top = 40.0
 margin_right = 720.0
-margin_bottom = 140.0
+margin_bottom = 170.0
 theme = ExtResource( 11 )
 text = "こんいろ"
 align = 1

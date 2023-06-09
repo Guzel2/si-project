@@ -620,7 +620,8 @@ animations = [ {
 } ]
 
 [node name="monster_sprite" type="AnimatedSprite"]
-position = Vector2( 1000, 350 )
+position = Vector2( 1000, 400 )
+scale = Vector2( 0.8, 0.8 )
 z_index = -1
 frames = SubResource( 4 )
 animation = "violin"
