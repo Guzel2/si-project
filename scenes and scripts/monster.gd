@@ -1,7 +1,8 @@
 extends Node2D
 
 onready var parent = get_parent()
-onready var question = find_node('question')
+onready var question_english = find_node('questions_english')
+onready var questions_japanese = find_node('questions_japanese')
 onready var sprite
 
 var romaji_to_hiragana = {
@@ -122,6 +123,10 @@ var romaji_to_katakana = {
 	'wo': 'ヲ',
 }
 
+func _ready():
+	questions_japanese.text = ''
+	question_english.text = ''
+
 func sprite_flews():
 	sprite.phase = 4
 
@@ -129,15 +134,17 @@ func sprite_dies():
 	sprite.phase = 1
 
 func set_question(new_question, mode):
+	questions_japanese.text = ''
+	question_english.text = ''
 	match mode:
 		'hira':
-			question.text = romaji_to_hiragana[new_question]
+			questions_japanese.text = romaji_to_hiragana[new_question]
 		'kata':
-			question.text = romaji_to_katakana[new_question]
+			questions_japanese.text = romaji_to_katakana[new_question]
 		'vocab_english':
-			question.text = new_question
+			question_english.text = new_question
 		'vocab_japanese':
-			question.text = parent.answers[new_question][0]
+			questions_japanese.text = parent.answers[new_question][0]
 	
 	if sprite:
 		add_new_sprite(new_question, mode)
@@ -154,5 +161,6 @@ func add_new_sprite(new_question, mode):
 	add_child(sprite)
 
 func end_round():
-	question.text = ''
+	questions_japanese.text = ''
+	question_english.text = ''
 	sprite = null

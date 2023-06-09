@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://assets/Fonts/Gotham-Bold.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 13.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_bottom = 15
+border_color = Color( 0.317647, 0.74902, 0.839216, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[resource]
+default_font = SubResource( 10 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+LineEdit/colors/font_color = Color( 0.29, 0.29, 0.29, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.34902, 0, 1, 0.501961 )
+LineEdit/colors/selection_color = Color( 0.559, 0.804817, 0.86, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = SubResource( 10 )
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 11 )
+LineEdit/styles/normal = SubResource( 11 )
+LineEdit/styles/read_only = null

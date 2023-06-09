@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://sprites/ui/show_answer_pressed.png" type="Texture" id=1]
 [ext_resource path="res://sprites/character/Katana_Kat_Still.png" type="Texture" id=2]
@@ -9,11 +9,9 @@
 [ext_resource path="res://sprites/character/Katana_Kat.png" type="Texture" id=7]
 [ext_resource path="res://sprites/character/Katana_Kat_Zwischenframe.png" type="Texture" id=8]
 [ext_resource path="res://sprites/ui/show_answer.png" type="Texture" id=9]
-[ext_resource path="res://assets/Fonts/Gotham-Medium.otf" type="DynamicFontData" id=10]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 5 )
+[ext_resource path="res://themes/text_field.tres" type="Theme" id=10]
+[ext_resource path="res://themes/word_label_english.tres" type="Theme" id=11]
+[ext_resource path="res://themes/word_label_japanese.tres" type="Theme" id=12]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -28,39 +26,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 10 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-content_margin_left = 13.0
-bg_color = Color( 1, 1, 1, 1 )
-border_width_bottom = 15
-border_color = Color( 0.317647, 0.74902, 0.839216, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="Theme" id=12]
-default_font = SubResource( 10 )
-LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-LineEdit/colors/cursor_color = Color( 0.827451, 0.827451, 0.827451, 1 )
-LineEdit/colors/font_color = Color( 0.29, 0.29, 0.29, 1 )
-LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_uneditable = Color( 0.34902, 0, 1, 0.501961 )
-LineEdit/colors/selection_color = Color( 0.559, 0.804817, 0.86, 1 )
-LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = SubResource( 10 )
-LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 11 )
-LineEdit/styles/normal = SubResource( 11 )
-LineEdit/styles/read_only = null
-
-[sub_resource type="DynamicFont" id=13]
-size = 40
-font_data = ExtResource( 5 )
-
 [sub_resource type="DynamicFont" id=3]
 size = 50
 font_data = ExtResource( 5 )
@@ -71,12 +36,25 @@ script = ExtResource( 3 )
 [node name="monster" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="question" type="Label" parent="monster"]
-margin_left = 420.0
-margin_top = 579.0
-margin_right = 508.0
-margin_bottom = 663.0
-custom_fonts/font = SubResource( 1 )
+[node name="questions_english" type="Label" parent="monster"]
+margin_left = 216.0
+margin_top = 40.0
+margin_right = 719.0
+margin_bottom = 140.0
+theme = ExtResource( 11 )
+text = "Sussy"
+align = 1
+valign = 1
+
+[node name="questions_japanese" type="Label" parent="monster"]
+margin_left = 216.0
+margin_top = 40.0
+margin_right = 720.0
+margin_bottom = 140.0
+theme = ExtResource( 12 )
+text = "こんいろ"
+align = 1
+valign = 1
 
 [node name="character" type="AnimatedSprite" parent="."]
 position = Vector2( 207, 547 )
@@ -94,8 +72,7 @@ margin_left = 45.0
 margin_top = 720.0
 margin_right = 530.0
 margin_bottom = 820.0
-theme = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+theme = ExtResource( 10 )
 placeholder_text = "Click to start"
 
 [node name="show_answer" type="TextureButton" parent="."]
