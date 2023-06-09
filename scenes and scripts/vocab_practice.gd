@@ -9,6 +9,9 @@ onready var character = find_node('character')
 onready var monster = find_node('monster')
 onready var highscore_label = find_node('highscore_label')
 onready var new_word = find_node('new_word')
+onready var show_answer = $show_answer
+
+var started = false
 
 var question
 
@@ -245,8 +248,6 @@ var all_questions = [
 
 var due_questions = []
 
-var active = false
-
 var current_question = 'apple'
 
 var mode = 'vocab_japanese'
@@ -271,15 +272,15 @@ func _ready():
 
 
 func start_new_round():
-	lineedit.placeholder_text = 'translate'
+	started = true
+	lineedit.placeholder_text = 'Translate'
 	
 	next_question()
 
 
 func end_round():
+	started = false
 	parent.return_to_home()
-	
-	active = false
 	
 	reset_lineedit.grab_focus()
 	monster.set_question('', mode)
@@ -393,7 +394,7 @@ func _on_lineedit_focus_entered():
 		due_dates[current_question] = OS.get_datetime()
 		due_dates[current_question]['interval'] = 0
 		
-		lineedit.placeholder_text = 'translate'
+		lineedit.placeholder_text = 'Translate'
 		monster.sprite_flews()
 		due_questions.append(current_question)
 		due_questions.shuffle()
@@ -416,16 +417,22 @@ func _on_lineedit_text_changed(new_text):
 
 
 func _on_lineedit_focus_exited():
-	lineedit.placeholder_text = 'click to start'
+	lineedit.placeholder_text = 'Click to start'
 
 
 func _on_show_answer_pressed():
-	streak = 0
-	
-	match mode:
-		'vocab_english':
-			lineedit.text = answers[current_question][0]
-		'vocab_japanese':
-			lineedit.text = current_question
-	
-	just_showed_answer = true
+	if started:
+		streak = 0
+		
+		match mode:
+			'vocab_english':
+				lineedit.text = answers[current_question][0]
+			'vocab_japanese':
+				lineedit.text = current_question.capitalize()
+		
+		just_showed_answer = true
+
+
+func _on_show_answer_button_down():
+	if started:
+		lineedit.placeholder_text = 'Translate'

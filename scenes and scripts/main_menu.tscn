@@ -9,34 +9,37 @@ script = ExtResource( 2 )
 
 [node name="hiragana" parent="." instance=ExtResource( 6 )]
 margin_left = 45.0
-margin_top = 445.0
+margin_top = 537.0
 margin_right = 675.0
-margin_bottom = 645.0
+margin_bottom = 737.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="katakana" parent="." instance=ExtResource( 6 )]
 margin_left = 45.0
-margin_top = 685.0
+margin_top = 777.0
 margin_right = 675.0
-margin_bottom = 885.0
+margin_bottom = 977.0
 text = "Katakana"
 
 [node name="vocab_practice" parent="." instance=ExtResource( 6 )]
 margin_left = 45.0
-margin_top = 925.0
+margin_top = 1017.0
 margin_right = 675.0
-margin_bottom = 1125.0
+margin_bottom = 1217.0
 text = "Vocabulary"
 
 [node name="vocab_practice2" parent="." instance=ExtResource( 6 )]
 margin_left = 45.0
-margin_top = 1165.0
+margin_top = 1257.0
 margin_right = 675.0
-margin_bottom = 1365.0
+margin_bottom = 1457.0
 text = "Vocabulary"
 
 [node name="Logo" type="Sprite" parent="."]
-position = Vector2( 353, 248 )
-scale = Vector2( 0.100158, 0.100158 )
+position = Vector2( 360.199, 250 )
+scale = Vector2( 0.11999, 0.11999 )
 texture = ExtResource( 4 )
 
 [connection signal="pressed" from="hiragana" to="." method="_on_hiragana_pressed"]

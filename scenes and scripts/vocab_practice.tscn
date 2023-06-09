@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes and scripts/vocab_practice.gd" type="Script" id=1]
 [ext_resource path="res://sprites/character/Katana_Kat_Still.png" type="Texture" id=2]
 [ext_resource path="res://scenes and scripts/character.gd" type="Script" id=3]
 [ext_resource path="res://scenes and scripts/monster.gd" type="Script" id=4]
 [ext_resource path="res://assets/NotoSansJP-Regular.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://sprites/ui/small_button.png" type="Texture" id=6]
+[ext_resource path="res://sprites/ui/show_answer_pressed.png" type="Texture" id=6]
 [ext_resource path="res://sprites/backgrounds/Land_BG_blurred.png" type="Texture" id=7]
 [ext_resource path="res://sprites/character/Katana_Kat.png" type="Texture" id=8]
 [ext_resource path="res://sprites/character/Katana_Kat_Zwischenframe.png" type="Texture" id=9]
+[ext_resource path="res://assets/Fonts/Gotham-Medium.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://sprites/ui/show_answer.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -41,6 +43,35 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 13.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_bottom = 15
+border_color = Color( 0.317647, 0.74902, 0.839216, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 10 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+LineEdit/colors/font_color = Color( 0.29, 0.29, 0.29, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.34902, 0, 1, 0.501961 )
+LineEdit/colors/selection_color = Color( 0.559, 0.804817, 0.86, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = SubResource( 10 )
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 11 )
+LineEdit/styles/normal = SubResource( 11 )
+LineEdit/styles/read_only = null
+
 [sub_resource type="DynamicFont" id=3]
 size = 40
 font_data = ExtResource( 5 )
@@ -51,6 +82,9 @@ font_data = ExtResource( 5 )
 
 [node name="vocab_practice" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 530.0, 575.0 ]
+}
 
 [node name="bg" type="AnimatedSprite" parent="."]
 visible = false
@@ -90,12 +124,21 @@ script = ExtResource( 3 )
 anchor_mode = 0
 
 [node name="lineedit" type="LineEdit" parent="."]
-margin_left = 129.0
-margin_top = 724.0
-margin_right = 548.0
-margin_bottom = 802.0
+margin_left = 45.0
+margin_top = 720.0
+margin_right = 530.0
+margin_bottom = 820.0
+theme = SubResource( 9 )
 custom_fonts/font = SubResource( 3 )
-placeholder_text = "click to start"
+placeholder_text = "Click to start"
+
+[node name="show_answer" type="TextureButton" parent="."]
+margin_left = 575.0
+margin_top = 720.0
+margin_right = 675.0
+margin_bottom = 820.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 6 )
 
 [node name="reset_lineedit" type="LineEdit" parent="."]
 margin_left = -264.0
@@ -111,26 +154,9 @@ margin_right = 666.0
 margin_bottom = 1451.0
 custom_fonts/font = SubResource( 4 )
 
-[node name="show_answer" type="TextureButton" parent="."]
-margin_left = 329.0
-margin_top = 649.0
-margin_right = 455.0
-margin_bottom = 689.0
-texture_normal = ExtResource( 6 )
-
-[node name="Label" type="Label" parent="show_answer"]
-margin_left = 14.0
-margin_top = -1.0
-margin_right = 233.0
-margin_bottom = 51.0
-custom_fonts/font = SubResource( 5 )
-text = "Show answer"
-__meta__ = {
-"_edit_lock_": true
-}
-
 [connection signal="animation_finished" from="character" to="character" method="_on_character_animation_finished"]
 [connection signal="focus_entered" from="lineedit" to="." method="_on_lineedit_focus_entered"]
 [connection signal="focus_exited" from="lineedit" to="." method="_on_lineedit_focus_exited"]
 [connection signal="text_changed" from="lineedit" to="." method="_on_lineedit_text_changed"]
+[connection signal="button_down" from="show_answer" to="." method="_on_show_answer_button_down"]
 [connection signal="pressed" from="show_answer" to="." method="_on_show_answer_pressed"]

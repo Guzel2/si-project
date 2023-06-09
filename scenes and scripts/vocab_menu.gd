@@ -44,6 +44,8 @@ var due_dates = {}
 
 var due_path = 'user://due_dates_'
 
+onready var buttons = [$daily, $nature, $city, $food]
+
 func save_file(content, path):
 	var file = File.new()
 	file.open(path, File.WRITE)
@@ -86,14 +88,27 @@ func _ready():
 			elif due_dates[new_question][interval] > current_date[interval]:
 				break
 	
-	find_node('daily_label').text = 'Daily Practice\n Due Words: ' + String(due_questions.size())
+	if true == false: #change labels and stuff
+		find_node('daily').label.text = 'Daily Practice\n Due Words: ' + String(due_questions.size())
+		
+		if due_dates.size() < 10:
+			find_node('nature').label.text += '(locked)'
+		if due_dates.size() < 20:
+			find_node('city').label.text += '(locked)'
+		if due_dates.size() < 40:
+			find_node('food').label.text += '(locked)'
+
+func _process(_delta):
+	var y_offset = 175 + get_viewport_rect().size.y / 100
 	
-	if due_dates.size() < 10:
-		find_node('nature_label').text += '(locked)'
-	if due_dates.size() < 20:
-		find_node('city_label').text += '(locked)'
-	if due_dates.size() < 40:
-		find_node('food_label').text += '(locked)'
+	var height = get_viewport_rect().size.y - y_offset
+	
+	height /= 4
+	
+	var x = 0
+	for button in buttons:
+		button.rect_position.y = x * height + y_offset
+		x += 1
 
 func _on_daily_pressed():
 	if due_questions.size() == 0: #if there are no due questions, what do?
@@ -116,7 +131,7 @@ func _on_nature_pressed():
 		due_questions.clear()
 		
 		var pool = generate_pool_with_learned_words(5)
-		for x in range(3):
+		for _x in range(3):
 			due_questions.append(pool.pop_front())
 		pool.clear()
 		

@@ -166,7 +166,7 @@ func _on_lineedit_focus_entered():
 	if !just_showed_answer:
 		start_new_round()
 	else: #monster flews
-		lineedit.placeholder_text = 'write as romaji'
+		lineedit.placeholder_text = 'Write as romaji'
 		monster.sprite_flews()
 		due_questions.append(current_question)
 		due_questions.shuffle()
@@ -182,9 +182,10 @@ func _on_lineedit_text_changed(new_text):
 
 
 func _on_lineedit_focus_exited():
-	lineedit.placeholder_text = 'click to start'
+	lineedit.placeholder_text = 'Click to start'
 
 
 func _on_show_answer_pressed():
-	lineedit.text = current_question + ' (click to continue)'
+	lineedit.text = current_question + ' (Click to continue)'
 	just_showed_answer = true
+

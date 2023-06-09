@@ -1,92 +1,36 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/NotoSansJP-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes and scripts/vocab_menu.gd" type="Script" id=2]
-[ext_resource path="res://sprites/ui/button.png" type="Texture" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+[ext_resource path="res://scenes and scripts/button.tscn" type="PackedScene" id=4]
 
 [node name="vocab_menu" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="daily" type="TextureButton" parent="."]
-margin_left = 61.0
-margin_top = 75.0
-margin_right = 691.0
-margin_bottom = 275.0
-texture_normal = ExtResource( 3 )
+[node name="daily" parent="." instance=ExtResource( 4 )]
+margin_left = 45.0
+margin_right = 675.0
+text = "Daily"
 
-[node name="daily_label" type="Label" parent="daily"]
-margin_left = 94.0
-margin_top = 43.0
-margin_right = 507.0
-margin_bottom = 157.0
-custom_fonts/font = SubResource( 1 )
-text = "daily practice"
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="nature" parent="." instance=ExtResource( 4 )]
+margin_left = 45.0
+margin_top = 200.0
+margin_right = 675.0
+margin_bottom = 380.0
+text = "Nature"
 
-[node name="nature" type="TextureButton" parent="."]
-margin_left = 61.0
-margin_top = 350.0
-margin_right = 691.0
-margin_bottom = 550.0
-texture_normal = ExtResource( 3 )
+[node name="city" parent="." instance=ExtResource( 4 )]
+margin_left = 45.0
+margin_top = 400.0
+margin_right = 675.0
+margin_bottom = 580.0
+text = "City"
 
-[node name="nature_label" type="Label" parent="nature"]
-margin_left = 94.0
-margin_top = 43.0
-margin_right = 507.0
-margin_bottom = 157.0
-custom_fonts/font = SubResource( 1 )
-text = "nature (10 words)
-"
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="city" type="TextureButton" parent="."]
-margin_left = 61.0
-margin_top = 625.0
-margin_right = 691.0
-margin_bottom = 825.0
-texture_normal = ExtResource( 3 )
-
-[node name="city_label" type="Label" parent="city"]
-margin_left = 94.0
-margin_top = 43.0
-margin_right = 507.0
-margin_bottom = 157.0
-custom_fonts/font = SubResource( 1 )
-text = "city (20 words)
-"
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="food" type="TextureButton" parent="."]
-margin_left = 61.0
-margin_top = 900.0
-margin_right = 691.0
-margin_bottom = 1100.0
-texture_normal = ExtResource( 3 )
-
-[node name="food_label" type="Label" parent="food"]
-margin_left = 94.0
-margin_top = 43.0
-margin_right = 507.0
-margin_bottom = 157.0
-custom_fonts/font = SubResource( 1 )
-text = "food (15 words)
-"
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="food" parent="." instance=ExtResource( 4 )]
+margin_left = 45.0
+margin_top = 600.0
+margin_right = 675.0
+margin_bottom = 780.0
+text = "Food"
 
 [connection signal="pressed" from="daily" to="." method="_on_daily_pressed"]
 [connection signal="pressed" from="nature" to="." method="_on_nature_pressed"]

@@ -11,7 +11,7 @@ font_data = ExtResource( 3 )
 
 [node name="button" type="TextureButton"]
 margin_right = 630.0
-margin_bottom = 200.0
+margin_bottom = 180.0
 keep_pressed_outside = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
@@ -20,7 +20,7 @@ text = "Hiragana"
 
 [node name="label" type="Label" parent="."]
 margin_right = 630.0
-margin_bottom = 185.0
+margin_bottom = 165.0
 custom_fonts/font = SubResource( 1 )
 text = "Hiragana"
 align = 1
