@@ -9,7 +9,7 @@ var y_offset = 440
 func _ready():
 	enter()
 
-func _process(delta):
+func _process(_delta):
 	y_offset = 440 + get_viewport_rect().size.y / 30
 	
 	var height = get_viewport_rect().size.y - y_offset

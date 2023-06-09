@@ -120,7 +120,7 @@ func generate_pool_with_learned_words(max_interval):
 	var pool = []
 	for question in due_dates.keys():
 		if due_dates[question]['interval'] < max_interval:
-			for x in range(max_interval-due_dates[question]['interval']):
+			for _x in range(max_interval-due_dates[question]['interval']):
 				pool.append(question)
 	
 	pool.shuffle()
@@ -140,7 +140,7 @@ func _on_nature_pressed():
 			if question in due_dates.keys():
 				pool.append(question)
 		pool.shuffle()
-		for x in range(7):
+		for _x in range(7):
 			var question = pool.pop_front()
 			due_questions.append(question)
 			pool.append(question)
@@ -173,7 +173,7 @@ func _on_food_pressed():
 		due_questions.clear()
 		
 		var pool = generate_pool_with_learned_words(5)
-		for x in range(4):
+		for _x in range(4):
 			due_questions.append(pool.pop_front())
 		pool.clear()
 		
@@ -182,7 +182,7 @@ func _on_food_pressed():
 			if question in due_dates.keys():
 				pool.append(question)
 		pool.shuffle()
-		for x in range(11):
+		for _x in range(11):
 			var question = pool.pop_front()
 			due_questions.append(question)
 			pool.append(question)
