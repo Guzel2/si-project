@@ -1,0 +1,59 @@
+
+scope:
+
+hiragan + katakana üben
++ Vokabeln
+
+hi score system
+Leben system
+
+
+
+Hiragan + Katakana übung:
+
+Tempel (vgl. jap tempel)
+
+man sieht hiragan/katakana:
+per tastatur eingeben
+
+Schrift zeichen unter/ober viech
+
+
+Prototyp:
+- basic menu
+- 10 viecher
+- dojo (hiragna)
+- tempel (Katgakan)
+- wald (voc)
+- minimal animation
+- main char katze rawr
+- alle hiragana und katakana
+
+
+To Do:
+
+Marko:
+- BG :)
+- UI Elemente evlt (buttons)
+- Design Character (Main char, animationen etc)
+- Enemy Characters	(depends on vocabular)
+- Vocabulary selection
+
+Laurin:
+- Working UI
+- Flash card system
+- Time trial
+- Main gameplay loop
+- Optionen
+- Achievments
+
+
+
+
+
+
+
+
+
+
+.
