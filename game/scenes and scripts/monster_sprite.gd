@@ -65,21 +65,24 @@ func _process(delta):
 			phase = 2
 		2: #wait  sec
 			timer += delta
-			if timer >= .35:
+			if timer >= .15:
 				phase = 3
 				should_move = false
 		3: #fade away
-			var should_die = true
+			cut_in_half()
+			phase = 9
 			
-			if !set_modulate_to(Color(1, 1, 1, 0), 5):
-				should_die = false
-			if !set_scale_to(Vector2(1.25, .75), 20):
-				should_die = false
-			if !set_position_to(Vector2(430, 400), 10):
-				should_die = false
+			#var should_die = true
 			
-			if should_die:
-				phase = 9
+			#if !set_modulate_to(Color(1, 1, 1, 0), 5):
+			#	should_die = false
+			#if !set_scale_to(Vector2(1.25, .75), 20):
+			#	should_die = false
+			#if !set_position_to(Vector2(430, 400), 10):
+			#	should_die = false
+			
+			#if should_die:
+			#	phase = 9
 		
 		4: #flee start up
 			should_move = false
@@ -112,6 +115,37 @@ func _process(delta):
 		
 		9: #die
 			queue_free()
+
+func cut_in_half():
+	var cut_angle = 10 + (randi() % 26)
+	var cut_y_offset = -10 + (randi() % 21)
+	
+	var texture = frames.get_frame(animation, 0)
+	var size = texture.get_size()
+	print(size * scale)
+	var cut_offset = cut_angle / 45.0 * (size.y / 2)
+	
+	var left_cut_point = Vector2(0, size.y/2 + cut_offset + cut_y_offset)
+	var right_cut_point = Vector2(size.x, size.y/2 - cut_offset + cut_y_offset)
+	
+	var top_points = [Vector2(0, 0), left_cut_point, right_cut_point, Vector2(size.x, 0)]
+	var bot_points = [left_cut_point, Vector2(0, size.y), size, right_cut_point]
+	
+	var top_shard = load("res://scenes and scripts/monster_polygon.tscn").instance()
+	top_shard.polygon = top_points
+	top_shard.texture = texture
+	top_shard.position = (position - size/2) * 4.0/3.0
+	top_shard.dir = Vector2(0, -1).rotated(-cut_angle / 180.0 * PI)
+	get_parent().add_child(top_shard)
+	
+	var bot_shard = load("res://scenes and scripts/monster_polygon.tscn").instance()
+	bot_shard.polygon = bot_points
+	bot_shard.texture = texture
+	bot_shard.position = (position - size/2) * 4.0/3.0
+	print(position, '   ', bot_shard.position)
+	bot_shard.dir = Vector2(0, 1).rotated(-cut_angle / 180.0 * PI)
+	get_parent().add_child(bot_shard)
+	
 
 func set_position_to(desired_position: Vector2, modifier: int):
 	position = (position * modifier + desired_position) / (modifier + 1)

@@ -33,12 +33,10 @@ func cut_in_half():
 	var top_shard = Polygon2D.new()
 	top_shard.polygon = top_points
 	top_shard.texture = texture
-	top_shard.position.x = 64
 	add_child(top_shard)
 	
 	var bot_shard = Polygon2D.new()
 	bot_shard.polygon = bot_points
 	bot_shard.texture = texture
-	bot_shard.position.x = 96
 	add_child(bot_shard)
 

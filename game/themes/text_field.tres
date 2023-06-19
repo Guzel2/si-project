@@ -1,10 +1,13 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
-[ext_resource path="res://assets/Fonts/Gotham-Bold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts/MSGOTHIC.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=10]
 size = 50
+extra_spacing_char = 1
 font_data = ExtResource( 1 )
+fallback/0 = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=11]
 content_margin_left = 13.0
