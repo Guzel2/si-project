@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://sprites/ui/flags2.png" type="Texture" id=1]
 [ext_resource path="res://scenes and scripts/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://sprites/ui/flags1.png" type="Texture" id=3]
 [ext_resource path="res://sprites/ui/Logo.png" type="Texture" id=4]
 [ext_resource path="res://scenes and scripts/button.tscn" type="PackedScene" id=6]
 
@@ -30,12 +32,22 @@ margin_right = 675.0
 margin_bottom = 1217.0
 text = "Vocabulary"
 
+[node name="sprite" type="Sprite" parent="vocab_practice"]
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( 0, -20 )
+
 [node name="vocab_practice2" parent="." instance=ExtResource( 6 )]
 margin_left = 45.0
 margin_top = 1257.0
 margin_right = 675.0
 margin_bottom = 1457.0
 text = "Vocabulary"
+
+[node name="sprite" type="Sprite" parent="vocab_practice2"]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 0, -20 )
 
 [node name="Logo" type="Sprite" parent="."]
 position = Vector2( 360.199, 250 )
