@@ -31,11 +31,12 @@ margin_top = 1017.0
 margin_right = 675.0
 margin_bottom = 1217.0
 text = "Vocabulary"
+label_offset = Vector2( -40, 0 )
 
 [node name="sprite" type="Sprite" parent="vocab_practice"]
 texture = ExtResource( 3 )
 centered = false
-offset = Vector2( 0, -20 )
+offset = Vector2( 20, -20 )
 
 [node name="vocab_practice2" parent="." instance=ExtResource( 6 )]
 margin_left = 45.0
@@ -43,11 +44,12 @@ margin_top = 1257.0
 margin_right = 675.0
 margin_bottom = 1457.0
 text = "Vocabulary"
+label_offset = Vector2( -40, 0 )
 
 [node name="sprite" type="Sprite" parent="vocab_practice2"]
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( 0, -20 )
+offset = Vector2( 20, -20 )
 
 [node name="Logo" type="Sprite" parent="."]
 position = Vector2( 360.199, 250 )

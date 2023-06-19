@@ -3,8 +3,10 @@ extends TextureButton
 onready var label = $label
 
 export var text = 'text'
+export var label_offset = Vector2(0, 0)
 
 func _ready():
+	label.rect_position += label_offset
 	label.text = text
 
 func _process(_delta):
