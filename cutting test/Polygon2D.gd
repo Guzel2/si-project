@@ -3,8 +3,11 @@ extends Polygon2D
 var time = 0
 var total_time = 1
 
+var cut_angle = 45
+var cut_y_offset = 0
+
 func _process(delta):
-	time += delta
+	#time += delta
 	if time > total_time:
 		cut_in_half()
 		set_process(false)
